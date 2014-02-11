@@ -1,13 +1,25 @@
 //
 //  ViewController.h
-//  JoinUp
+//  ChatTestApp
 //
-//  Created by Vasily Galuzin on 10/02/14.
-//  Copyright (c) 2014 Bros Universe. All rights reserved.
+//  Created by solid on 06.02.14.
+//  Copyright (c) 2014 solid. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
+#import "AppDelegate.h"
+#import "XMPPWrapper.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController {
+    XMPPStream *xmppStream;
+    NSString *password;
+    
+    XMPPWrapper *xmppwrapper;
+}
+@property (weak, nonatomic) IBOutlet UITextField *txtUserName;
+@property (weak, nonatomic) IBOutlet UITextField *txtUserPassword;
+
+- (IBAction)btnConnect:(id)sender;
+- (IBAction)btnDisconnect:(id)sender;
 
 @end

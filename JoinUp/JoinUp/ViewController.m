@@ -1,23 +1,28 @@
 //
 //  ViewController.m
-//  JoinUp
+//  ChatTestApp
 //
-//  Created by Vasily Galuzin on 10/02/14.
-//  Copyright (c) 2014 Bros Universe. All rights reserved.
+//  Created by solid on 06.02.14.
+//  Copyright (c) 2014 solid. All rights reserved.
 //
 
 #import "ViewController.h"
+#import "XMPP.h"
 
 @interface ViewController ()
 
 @end
 
-@implementation ViewController
+@implementation ViewController {
+    //XMPPStream* xmppstream;
+    //NSString *jid;
+    //NSString *passwd;
+    
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
 }
 
 - (void)didReceiveMemoryWarning
@@ -26,4 +31,14 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)btnConnect:(id)sender {
+    NSLog(@"connect");
+    xmppwrapper = [[XMPPWrapper alloc] initWithUserData:_txtUserName.text andPasswd:_txtUserPassword.text andHostName:@"192.168.1.100"];
+    [xmppwrapper connect];
+}
+
+- (IBAction)btnDisconnect:(id)sender {
+    NSLog(@"Disconnect");
+    [xmppwrapper disconnect];
+}
 @end

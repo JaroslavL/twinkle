@@ -88,8 +88,6 @@
                 
                 managerMessage = [NSKeyedUnarchiver unarchiveObjectWithFile:[[saveFilePathArray objectAtIndex:0] stringByAppendingPathComponent:filePath]];
                 
-                //managerMessage = [[ManagerMessages alloc] init];
-                
                 if (managerMessage) {
                     NSLog(@"not nil");
                 }

@@ -7,9 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "XMPPWrapper.h"
+#import "ManagerMessages.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate> {
+    UIBackgroundTaskIdentifier bgTask;
+    BOOL isBackground;
+}
 
 @property (strong, nonatomic) UIWindow *window;
+@property (nonatomic, readonly) BOOL isBackground;
 
 @end

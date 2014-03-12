@@ -11,6 +11,18 @@
 @implementation XMPPWrapper
 
 @synthesize REGISTER;
+@synthesize xmppStream;
+
+static XMPPWrapper* _sharedInstance;
+
++ (XMPPWrapper *)sharedInstance {
+    @synchronized(self) {
+        if (!_sharedInstance) {
+            _sharedInstance = [[XMPPWrapper alloc] init];
+        }
+    }
+    return _sharedInstance;
+}
 
 - (id)initWithUserData: (NSString *)login andPasswd: (NSString *)password andHostName: (NSString *)hostname {
     if (self = [super init]) {
@@ -18,8 +30,20 @@
         passwd = password;
         hostName = hostname;
         REGISTER = NO;
+        
+        _sharedInstance = self;
     }
-    return self;
+    return _sharedInstance;
+}
+
+- (void)initMessageArchiving {
+    
+    XMPPMessageArchivingCoreDataStorage *xmppMessageArchivingStorage = [XMPPMessageArchivingCoreDataStorage sharedInstance];
+    XMPPMessageArchiving *xmppMessageArchivingModule = [[XMPPMessageArchiving alloc]
+                                                        initWithMessageArchivingStorage:xmppMessageArchivingStorage];
+    
+    [xmppMessageArchivingModule activate:xmppStream];
+    [xmppMessageArchivingModule  addDelegate:self delegateQueue:dispatch_get_main_queue()];
 }
 
 - (void)setupStream {
@@ -29,6 +53,7 @@
 - (void)goOnline {
     XMPPPresence *presence= [XMPPPresence presence];
     [xmppStream sendElement:presence];
+     /*online/unavailable/away/busy/invisible*/
 }
 - (void)goOffline {
     XMPPPresence *presence = [XMPPPresence presenceWithType:@"unavailable"]; 
@@ -49,14 +74,19 @@
     [xmppStream setMyJID:[XMPPJID jidWithString:jid]];
     [xmppStream setHostName:hostName];
     
+    // init storage message on server
+    
+    [self initMessageArchiving];
+    
     NSError *error = nil;
     if (![xmppStream connectWithTimeout:XMPPStreamTimeoutNone error:&error])
     {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                            message:[NSString stringWithFormat:@"Can't connect to server %@", [error localizedDescription]]
-                                                           delegate:nil
-                                                  cancelButtonTitle:@"Ok"
-                                                  otherButtonTitles:nil];
+        UIAlertView *alertView = [[UIAlertView alloc]
+                                  initWithTitle:@"Error"
+                                  message:[NSString stringWithFormat:@"Can't connect to server %@", [error localizedDescription]]
+                                  delegate:nil
+                                  cancelButtonTitle:@"Ok"
+                                  otherButtonTitles:nil];
         [alertView show];
         
         return NO;
@@ -70,11 +100,27 @@
     [xmppStream disconnect];
 }
 
+- (void) sendMessage: (NSXMLElement *)message {
+    [xmppStream sendElement:message];
+}
+
+- (void)xmppStream:(XMPPStream *)sender didReceiveMessage:(XMPPMessage *)message {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"NewMessage" object:message];
+}
+
+- (BOOL)xmppStream:(XMPPStream *)sender didReceiveIQ:(XMPPIQ *)iq {
+    NSLog(@"IQ, %@", iq);
+    return YES;
+}
+
 - (void) xmppStreamDidConnect:(XMPPStream *)sender
 {
     if ([xmppStream authenticateWithPassword:passwd error:NULL]) {
-        [self goOnline];
     }
+}
+
+- (void)xmppStreamDidAuthenticate:(XMPPStream *)sender {
+    [self goOnline];
 }
 
 - (void)xmppStream:(XMPPStream *)sender didNotAuthenticate:
@@ -83,11 +129,23 @@
     if ([self REGISTER]) {
         if(![xmppStream registerWithPassword:passwd error:nil])
         {
-            NSLog(@"Error registering");
+            UIAlertView *alertView = [[UIAlertView alloc]
+                                      initWithTitle:@"Error"
+                                      message:[NSString stringWithFormat:@"You are not register %@", nil]
+                                      delegate:nil
+                                      cancelButtonTitle:@"Ok"
+                                      otherButtonTitles:nil];
+            [alertView show];
             [self disconnect];
         }
     } else {
-        NSLog(@"You are not registr");
+        UIAlertView *alertView = [[UIAlertView alloc]
+                                  initWithTitle:@"Error"
+                                  message:[NSString stringWithFormat:@"You are not register %@", nil]
+                                  delegate:nil
+                                  cancelButtonTitle:@"Ok"
+                                  otherButtonTitles:nil];
+        [alertView show];
         [self disconnect];
     }
     
@@ -99,8 +157,68 @@
 
 - (void)xmppStream:(XMPPStream *)sender didNotRegister:(NSXMLElement
                                                         *)error{
-    NSLog(@"Sorry the registration is failed");
+    UIAlertView *alertView = [[UIAlertView alloc]
+                              initWithTitle:@"Error"
+                              message:[NSString stringWithFormat:@"Sorry the registration is failed %@", nil]
+                              delegate:nil
+                              cancelButtonTitle:@"Ok"
+                              otherButtonTitles:nil];
+    [alertView show];
+}
+
+- (NSArray *)loadArchiveMessage: (NSString *)withJID i:(NSString *)i
+{
     
+    XMPPMessageArchivingCoreDataStorage *storage = [XMPPMessageArchivingCoreDataStorage sharedInstance];
+    NSManagedObjectContext *moc = [storage mainThreadManagedObjectContext];
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"XMPPMessageArchiving_Message_CoreDataObject"
+                                                         inManagedObjectContext:moc];
+    
+    NSFetchRequest *request = [[NSFetchRequest alloc]init];
+    
+    
+    NSString *predicateFrmt = @"bareJidStr like %@ AND streamBareJidStr like %@";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:predicateFrmt, withJID, i];
+    request.predicate = predicate;
+    [request setEntity:entityDescription];
+    
+    NSError *error;
+    NSArray *messages = [moc executeFetchRequest:request error:&error];
+    
+    return messages;
+}
+
+-(void)print:(NSMutableArray*)messages_arc {
+    @autoreleasepool {
+        for (XMPPMessageArchiving_Message_CoreDataObject *message in messages_arc) {
+            
+            NSXMLElement *element = [[NSXMLElement alloc] initWithXMLString:message.messageStr error:nil];
+            NSLog(@"to param is %@",[element attributeStringValueForName:@"to"]);
+            
+            NSMutableDictionary *m = [[NSMutableDictionary alloc] init];
+            [m setObject:message.body forKey:@"msg"];
+            
+            if ([[element attributeStringValueForName:@"to"] isEqualToString:jid]) {
+                
+                [m setObject:@"you" forKey:@"sender"];
+            }
+            else
+            {
+                [m setObject:jid forKey:@"sender"];
+            }
+            
+            
+            //[messages addObject:m];
+            
+            NSLog(@"bareJid param is %@",message.bareJid);
+            NSLog(@"bareJidStr param is %@",message.bareJidStr);
+            NSLog(@"body param is %@",message.body);
+            NSLog(@"timestamp param is %@",message.timestamp);
+            NSLog(@"outgoing param is %d",[message.outgoing intValue]);
+            NSLog(@"outgoing param is %@",[message streamBareJidStr]);
+            NSLog(@"***************************************************");
+        }
+    }
 }
 
 @end

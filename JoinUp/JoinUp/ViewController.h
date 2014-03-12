@@ -8,18 +8,32 @@
 
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
+#import "ChatViewController.h"
+#import "RegistrationViewController.h"
 #import "XMPPWrapper.h"
+#import "NSString+hash.h"
+#import "Profile.h"
+#import "ManagerMessages.h"
 
 @interface ViewController : UIViewController {
+    
     XMPPStream *xmppStream;
     NSString *password;
     
     XMPPWrapper *xmppwrapper;
+    
+    Profile *profile;
+    
+    ManagerMessages *managerMessage;
+    
 }
 @property (weak, nonatomic) IBOutlet UITextField *txtUserName;
 @property (weak, nonatomic) IBOutlet UITextField *txtUserPassword;
 
+@property (retain, nonatomic) NSURLConnection *connection;
+@property (retain, nonatomic) NSMutableData *receiveData;
+
 - (IBAction)btnConnect:(id)sender;
-- (IBAction)btnDisconnect:(id)sender;
+- (IBAction)btnRegistration:(id)sender;
 
 @end

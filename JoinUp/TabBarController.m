@@ -143,7 +143,7 @@
     
     UITabBarItem *chatItem = (UITabBarItem *)[self.tabBar.items objectAtIndex:2];
     
-    if (_countMessage && chatIsActive) {
+    if (_countMessage >= 0 && chatIsActive) {
         
         _countMessage++;
         chatItem.badgeValue = [NSString stringWithFormat:@"%d", _countMessage];

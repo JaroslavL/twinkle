@@ -1436,6 +1436,8 @@
 		CB90DFC418AB988F0010B58D /* Chat */ = {
 			isa = PBXGroup;
 			children = (
+				CB050E8D18C9C5C9007AC62B /* ManagerMessages.h */,
+				CB050E8E18C9C5C9007AC62B /* ManagerMessages.m */,
 				CBA87E7F18ABB3DE00B272A8 /* images */,
 				CB90DFC518AB9A150010B58D /* NSBubbleData.h */,
 				CB90DFC618AB9A150010B58D /* NSBubbleData.m */,
@@ -1551,8 +1553,6 @@
 				D908EC1B18A914EB00424A3B /* Main_iPad.storyboard */,
 				D908EC2118A914EB00424A3B /* Images.xcassets */,
 				D908EC0D18A914EB00424A3B /* Supporting Files */,
-				CB050E8D18C9C5C9007AC62B /* ManagerMessages.h */,
-				CB050E8E18C9C5C9007AC62B /* ManagerMessages.m */,
 			);
 			path = JoinUp;
 			sourceTree = "<group>";

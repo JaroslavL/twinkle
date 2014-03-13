@@ -68,31 +68,9 @@
             NetworkConnection *nc = [[NetworkConnection alloc] init];
             profile = [[Profile alloc] initWithUserData:[nc getProfile:_txtUserName.text]];
             
-            NSArray *saveFilePathArray = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-            NSString *filePath = [[NSString alloc] initWithFormat:@"%@.plist", @"UsersWhosemMessagesaArenNotRead"];
+            managerMessage = [ManagerMessages sharedInstance];
             
-            if ([[NSFileManager defaultManager] fileExistsAtPath:[[saveFilePathArray objectAtIndex:0] stringByAppendingPathComponent:filePath]]) {
-                
-                managerMessage = [NSKeyedUnarchiver unarchiveObjectWithFile:[[saveFilePathArray objectAtIndex:0] stringByAppendingPathComponent:filePath]];
-                
-                NSLog(@"exist");
-                NSLog(@"%@", [managerMessage UsersWhosemMessagesaArenNotRead]);
-                
-            } else {
-                
-                [[NSFileManager defaultManager] createFileAtPath:[[saveFilePathArray objectAtIndex:0] stringByAppendingPathComponent:filePath]
-                                                        contents:nil
-                                                      attributes:nil];
-                
-                NSLog(@"file create");
-                
-                managerMessage = [NSKeyedUnarchiver unarchiveObjectWithFile:[[saveFilePathArray objectAtIndex:0] stringByAppendingPathComponent:filePath]];
-                
-                if (managerMessage) {
-                    NSLog(@"not nil");
-                }
-                
-            }
+            [managerMessage deserialize];
             
             [self performSegueWithIdentifier:@"TabBarController" sender:self];
             

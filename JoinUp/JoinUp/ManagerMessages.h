@@ -17,5 +17,7 @@
 + (ManagerMessages *)sharedInstance;
 
 - (void)add: (NSNotification *)notification;
+- (BOOL)serialize;
+- (BOOL)deserialize;
 
 @end

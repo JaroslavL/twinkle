@@ -61,13 +61,17 @@
     ManagerMessages *managerMessages = [ManagerMessages sharedInstance];
     
     if ([managerMessages UsersWhosemMessagesaArenNotRead]) {
+        
         for (User *u in [managerMessages UsersWhosemMessagesaArenNotRead]) {
             _countMessage += u.countMessages;
         }
         
         NSLog(@"%d", _countMessage);
+        
     } else {
+        
         _countMessage = 0;
+        
     }
     
     if (_countMessage) {
@@ -109,10 +113,14 @@
     _countMessage = _countMessage - [[notification object] intValue];
     
     if (_countMessage > 0) {
+        
         chatItem.badgeValue = [NSString stringWithFormat:@"%d", _countMessage];
+        
     } else {
+        
         chatItem.badgeValue = nil;
         _countMessage = 0;
+        
     }
     
 }
@@ -136,8 +144,10 @@
     UITabBarItem *chatItem = (UITabBarItem *)[self.tabBar.items objectAtIndex:2];
     
     if (_countMessage && chatIsActive) {
+        
         _countMessage++;
         chatItem.badgeValue = [NSString stringWithFormat:@"%d", _countMessage];
+        
     }
 }
 

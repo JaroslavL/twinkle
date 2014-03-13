@@ -32,13 +32,8 @@
     
     ManagerMessages *mm = [ManagerMessages sharedInstance];
     
-    NSArray *saveFilePathArray = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *filePath = [[NSString alloc] initWithFormat:@"%@.plist", @"UsersWhosemMessagesaArenNotRead"];
-    
-    NSLog(@"%@", [[saveFilePathArray objectAtIndex:0] stringByAppendingPathComponent:filePath]);
-    
-    if ([NSKeyedArchiver archiveRootObject:mm toFile:[[saveFilePathArray objectAtIndex:0] stringByAppendingPathComponent:filePath]]) {
-        NSLog(@"write");
+    if ([mm serialize]) {
+        NSLog(@"serialize");
     }
     
      bgTask = [application beginBackgroundTaskWithExpirationHandler:^{
@@ -89,15 +84,7 @@
     NSLog(@"App terminate");
     
     ManagerMessages *mm = [ManagerMessages sharedInstance];
-    
-    NSArray *saveFilePathArray = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *filePath = [[NSString alloc] initWithFormat:@"%@.plist", @"UsersWhosemMessagesaArenNotRead"];
-    
-    NSLog(@"%@", [[saveFilePathArray objectAtIndex:0] stringByAppendingPathComponent:filePath]);
-    
-    if ([NSKeyedArchiver archiveRootObject:mm toFile:[[saveFilePathArray objectAtIndex:0] stringByAppendingPathComponent:filePath]]) {
-        NSLog(@"write");
-    }
+    [mm serialize];
 }
 
 @end

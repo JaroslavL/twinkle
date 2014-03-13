@@ -49,14 +49,12 @@ static ManagerMessages* _sharedInstance;
 
 - (void)add: (NSNotification *)notification {
     
-    NSLog(@"add");
-    
     BOOL add = YES;
     
-        NSArray *jid = [[[notification object] fromStr] componentsSeparatedByString:@"/"];
+        NSArray *jid = [[[notification object] fromStr] componentsSeparatedByString:@"@"];
     
     for (User *u in _UsersWhosemMessagesaArenNotRead) {
-        if ([[u jabberID] isEqualToString:[jid[0] componentsSeparatedByString:@"@"][0]]) {
+        if ([[u jabberID] isEqualToString:jid[0]]) {
             add = NO;
             u.countMessages++;
             break;
@@ -64,16 +62,51 @@ static ManagerMessages* _sharedInstance;
     }
     
     if (add) {
-        NSLog(@"add user");
+        
         User *u = [[User alloc] init];
-        NSArray *login = [jid[0] componentsSeparatedByString:@"@"];
-        [u setJabberID:login[0]];
+        [u setJabberID:jid[0]];
         [u setCountMessages:1];
         [_UsersWhosemMessagesaArenNotRead addObject:u];
+        
     }
     
-    NSLog(@"%@", _UsersWhosemMessagesaArenNotRead);
+}
+
+- (BOOL)serialize {
     
+    NSArray *saveFilePathArray = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *fileName = [[NSString alloc] initWithFormat:@"%@.plist", @"UsersWhosemMessagesaArenNotRead"];
+    NSString *filePath = [[saveFilePathArray objectAtIndex:0] stringByAppendingPathComponent:fileName];
+
+    
+    return [NSKeyedArchiver archiveRootObject:self toFile:filePath];
+}
+
+- (BOOL)deserialize {
+    
+    NSArray *saveFilePathArray = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *fileName = [[NSString alloc] initWithFormat:@"%@.plist", @"UsersWhosemMessagesaArenNotRead"];
+    NSString *filePath = [[saveFilePathArray objectAtIndex:0] stringByAppendingPathComponent:fileName];
+    
+    if ([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
+        
+        [self setUsersWhosemMessagesaArenNotRead: [[NSKeyedUnarchiver unarchiveObjectWithFile:filePath] UsersWhosemMessagesaArenNotRead]];
+        
+    } else {
+        
+        if (![self serialize]) {
+            NSLog(@"File not created");
+            return NO;
+        }
+        
+        NSLog(@"File create");
+        NSLog(@"deserialize");
+        
+        [self setUsersWhosemMessagesaArenNotRead:[[NSKeyedUnarchiver unarchiveObjectWithFile:filePath] UsersWhosemMessagesaArenNotRead]];
+        
+    }
+    
+    return YES;
 }
 
 - (void)dealloc {

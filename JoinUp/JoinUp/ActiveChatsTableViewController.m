@@ -154,7 +154,6 @@
     // Pass the selected object to the new view controller.
     if ([[segue identifier] isEqualToString:@"showChat"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        //NSDate *object = _activeChats[indexPath.row];
         [[segue destinationViewController] setIsCurrentInterlocutor:[[User alloc] initWithUserData:_activeChats[indexPath.row]]];
         [_activeChats[indexPath.row] setCountMessages:0];
     }

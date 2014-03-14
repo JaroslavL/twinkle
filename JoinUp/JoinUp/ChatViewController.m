@@ -64,10 +64,16 @@
     managerMessages = [ManagerMessages sharedInstance];
     
     for (User *u in [managerMessages UsersWhosemMessagesaArenNotRead]) {
+        
         if ([[u jabberID] isEqualToString:[_isCurrentInterlocutor jabberID]]) {
+            
             [[managerMessages UsersWhosemMessagesaArenNotRead] removeObject:u];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"NewMessageReading"
+                                                  object:[[NSNumber alloc] initWithInt:[u countMessages]]];
             break;
+            
         }
+        
     }
     
 

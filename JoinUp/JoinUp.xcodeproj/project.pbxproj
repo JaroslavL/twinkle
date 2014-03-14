@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		CB050E7418C601D8007AC62B /* button_login@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CB050E7118C601D8007AC62B /* button_login@2x.png */; };
-		CB050E7618C605E9007AC62B /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CB050E7518C605E9007AC62B /* background@2x.png */; };
 		CB050E7D18C614DD007AC62B /* passwd@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CB050E7B18C614DD007AC62B /* passwd@2x.png */; };
 		CB050E7E18C614DD007AC62B /* login@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CB050E7C18C614DD007AC62B /* login@2x.png */; };
 		CB050E8B18C72AC7007AC62B /* bubbleSomeone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CB050E8918C72AC7007AC62B /* bubbleSomeone@2x.png */; };
@@ -172,6 +171,8 @@
 		CB90DFD418AB9A150010B58D /* UIBubbleTypingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB90DFCF18AB9A150010B58D /* UIBubbleTypingTableViewCell.m */; };
 		CB9DB55E18BB4CEB00C2A7E2 /* TDBadgedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9DB55D18BB4CEB00C2A7E2 /* TDBadgedCell.m */; };
 		CB9DB56118BB52FA00C2A7E2 /* ActiveChatsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9DB56018BB52FA00C2A7E2 /* ActiveChatsTableViewController.m */; };
+		CBA5166118D1FBD500437FDA /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CBA5166018D1FBD500437FDA /* background@2x.png */; };
+		CBA5166318D200DC00437FDA /* signin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CBA5166218D200DC00437FDA /* signin@2x.png */; };
 		CBA87E8A18ABB3DE00B272A8 /* bubbleMine.png in Resources */ = {isa = PBXBuildFile; fileRef = CBA87E8018ABB3DE00B272A8 /* bubbleMine.png */; };
 		CBA87E8C18ABB3DE00B272A8 /* bubbleSomeone.png in Resources */ = {isa = PBXBuildFile; fileRef = CBA87E8218ABB3DE00B272A8 /* bubbleSomeone.png */; };
 		CBA87E8E18ABB3DE00B272A8 /* missingAvatar.png in Resources */ = {isa = PBXBuildFile; fileRef = CBA87E8418ABB3DE00B272A8 /* missingAvatar.png */; };
@@ -208,7 +209,6 @@
 
 /* Begin PBXFileReference section */
 		CB050E7118C601D8007AC62B /* button_login@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_login@2x.png"; sourceTree = "<group>"; };
-		CB050E7518C605E9007AC62B /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background@2x.png"; sourceTree = "<group>"; };
 		CB050E7B18C614DD007AC62B /* passwd@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "passwd@2x.png"; sourceTree = "<group>"; };
 		CB050E7C18C614DD007AC62B /* login@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login@2x.png"; sourceTree = "<group>"; };
 		CB050E8918C72AC7007AC62B /* bubbleSomeone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubbleSomeone@2x.png"; sourceTree = "<group>"; };
@@ -530,6 +530,8 @@
 		CB9DB55D18BB4CEB00C2A7E2 /* TDBadgedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDBadgedCell.m; sourceTree = "<group>"; };
 		CB9DB55F18BB52FA00C2A7E2 /* ActiveChatsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActiveChatsTableViewController.h; sourceTree = "<group>"; };
 		CB9DB56018BB52FA00C2A7E2 /* ActiveChatsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActiveChatsTableViewController.m; sourceTree = "<group>"; };
+		CBA5166018D1FBD500437FDA /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background@2x.png"; sourceTree = "<group>"; };
+		CBA5166218D200DC00437FDA /* signin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "signin@2x.png"; sourceTree = "<group>"; };
 		CBA87E8018ABB3DE00B272A8 /* bubbleMine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubbleMine.png; sourceTree = "<group>"; };
 		CBA87E8218ABB3DE00B272A8 /* bubbleSomeone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubbleSomeone.png; sourceTree = "<group>"; };
 		CBA87E8418ABB3DE00B272A8 /* missingAvatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = missingAvatar.png; sourceTree = "<group>"; };
@@ -636,9 +638,10 @@
 		CB8EC8C818B5FCC800C06D28 /* UIImage */ = {
 			isa = PBXGroup;
 			children = (
+				CBA5166218D200DC00437FDA /* signin@2x.png */,
+				CBA5166018D1FBD500437FDA /* background@2x.png */,
 				CB050E7B18C614DD007AC62B /* passwd@2x.png */,
 				CB050E7C18C614DD007AC62B /* login@2x.png */,
-				CB050E7518C605E9007AC62B /* background@2x.png */,
 				CB050E7118C601D8007AC62B /* button_login@2x.png */,
 			);
 			name = UIImage;
@@ -1669,8 +1672,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB050E7618C605E9007AC62B /* background@2x.png in Resources */,
 				CB8EC97118B7B5CC00C06D28 /* radar@2x.png in Resources */,
+				CBA5166318D200DC00437FDA /* signin@2x.png in Resources */,
 				CB050E8C18C72AC7007AC62B /* bubbleMine@2x.png in Resources */,
 				CBA87E9018ABB3DE00B272A8 /* typingMine.png in Resources */,
 				CBA87E9218ABB3DE00B272A8 /* typingSomeone.png in Resources */,
@@ -1692,6 +1695,7 @@
 				CB90DFAE18AA1A540010B58D /* README.txt in Resources */,
 				CBA87E8F18ABB3DE00B272A8 /* missingAvatar@2x.png in Resources */,
 				CB050E8B18C72AC7007AC62B /* bubbleSomeone@2x.png in Resources */,
+				CBA5166118D1FBD500437FDA /* background@2x.png in Resources */,
 				CBA87E8E18ABB3DE00B272A8 /* missingAvatar.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

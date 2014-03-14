@@ -21,7 +21,7 @@ NSString *const NS_KEY_USERS = @"users";
 
 NSString *const NS_TEST_GET_USERS_URL = @"http://192.168.1.100/other/index.php?login=test&longitude=0.000000&latitude=0.000000";
 NSString *const NS_TEST_GET_PROFILE_URL = @"http://192.168.1.100/profile/index.php?login=";
-NSString *const NS_TEST_GET_PROFILES_URL = @"http://192.168.1.100/profile/profiles.php?logins=";
+NSString *const NS_TEST_GET_PROFILES_URL = @"http://192.168.1.100/profile/profiles.php?";
 //TODO: insert url to get profile data
 
 NSString *const KEY_USERS = @"users";
@@ -163,11 +163,15 @@ NSString *const KEY_LOGIN = @"login";
     
     NSString *url = NS_TEST_GET_PROFILES_URL;
     
+    int i = 0;
+    
     for (User *u in jids) {
-        url = [url stringByAppendingFormat:@"%@,", [u jabberID]];
+        url = [url stringByAppendingFormat:@"logins[%d]=%@&", i, [u jabberID]];
+        i++;
     }
     
     NSLog(@"%@", url);
+    i = 0;
     
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]
@@ -206,7 +210,12 @@ NSString *const KEY_LOGIN = @"login";
         [u setJabberID:[user objectForKey:KEY_LOGIN]];
         [u setAvatar:[user objectForKey:KEY_AVATAR]];
         [u setStatus:[user objectForKey:KEY_STATUS]];
-        [u setCountMessages:0];
+        /*for (User *uu in jids) {
+            
+        }*/
+        [u setCountMessages:[[jids objectAtIndex:i] countMessages]];
+        i++;
+        //[u setCountMessages:0];
         
         id path = [user objectForKey:KEY_AVATAR];
         NSURL *url = [NSURL URLWithString:path];

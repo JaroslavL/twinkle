@@ -38,12 +38,9 @@
     _activeChats = [[NSMutableArray alloc] init];
     _managerMessages = [ManagerMessages sharedInstance];
     
-    
-    //TODO: request for each user from UsersWhosemMessageArenNotRead
-    for (User *u in [_managerMessages UsersWhosemMessagesaArenNotRead]) {
-        if (![_activeChats containsObject:u]) {
-            [_activeChats addObject:[[User alloc] initWithUserData:u]];
-        }
+    if ([[_managerMessages UsersWhosemMessagesaArenNotRead] count]) {
+        NetworkConnection *nc = [[NetworkConnection alloc] init];
+        [_activeChats addObjectsFromArray:[nc getProfiles:[_managerMessages UsersWhosemMessagesaArenNotRead]]];
     }
     
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -81,8 +78,8 @@
 {
     static NSString *CellIdentifier = @"UserCell";
     UIUserCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    cell.userNameLabel.text = [_activeChats[indexPath.row] jabberID];
-    cell.userAvatarImageView.image = [_activeChats[indexPath.row] imgAvatar];
+    [[cell userNameLabel] setText:[_activeChats[indexPath.row] name]];
+    [[cell userAvatarImageView] setImage:[_activeChats[indexPath.row] imgAvatar]];
     
     if ([_activeChats[indexPath.row] countMessages]) {
         
@@ -101,8 +98,6 @@
     
     [cell setBadgeTextColor:nil];
     [cell setBadgeString:nil];
-    //[_activeChats[indexPath.row] setIAmWroteMessage:NO];
-    //[_activeChats[indexPath.row] setCountMessages:0];
     [[self tableView] reloadData];
 }
 
@@ -167,7 +162,6 @@
     for (User *u in _activeChats) {
         if ([[u jabberID] isEqualToString:[[notification object] jabberID]]) {
             add = NO;
-            //[u setIAmWroteMessage:YES];
             if ([[notification name] isEqualToString:@"AnotherInterlocator"]) {
                 u.countMessages++;
             }
@@ -179,7 +173,6 @@
     if (add) {
         
         [_activeChats addObject:[notification object]];
-        //[[_activeChats lastObject] setIAmWroteMessage:YES];
         if ([[notification name] isEqualToString:@"AnotherInterlocator"]) {
             [[_activeChats lastObject] setCountMessages:1];
         }

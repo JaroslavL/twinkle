@@ -72,9 +72,8 @@
 {
 	UIUserCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UserCell"];
 	User *user = [self.nearbyUsers objectAtIndex:indexPath.row];
-    cell.userLogin = user.jabberID;
-	cell.userNameLabel.text = user.name;
-	cell.distanceLabel.text = user.distance;
+    [cell setUserLogin:[user jabberID]];
+    [[cell userNameLabel] setText:[user name]];
     //cell.userAvatarImageView.image = [user imgAvatar];
     
     return cell;

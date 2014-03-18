@@ -33,13 +33,9 @@
     [_dataUser setDelegate:self];
     [_dataUser setDataSource:self];
     
-    ProfileViewer *pv = [[ProfileViewer alloc] initWithFrame:CGRectMake(0, 65, 320, 72)];
-    [pv drawRect:CGRectMake(0, 65, 320, 72)];
+    ProfileViewer *pv = [[ProfileViewer alloc] init];
+    [pv showProfile:profile showBtnStartChatingWith:NO];
     [self.view addSubview:pv];
-    //[[[[UIApplication sharedApplication] delegate] window] addSubview:pv];
-    //[self.view insertSubview:pv belowSubview:self.view];
-    //[self.navigationController.topViewController.view insertSubview:pv atIndex:5];
-    //[self.view insertSubview:pv atIndex:2];
     
 }
 

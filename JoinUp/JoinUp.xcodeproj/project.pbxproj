@@ -182,6 +182,7 @@
 		CBA60FCF18D6E6CA002BF08B /* ProfileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA60FCE18D6E6CA002BF08B /* ProfileTableViewCell.m */; };
 		CBA60FD218D711D1002BF08B /* StatusTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA60FD118D711D1002BF08B /* StatusTableViewCell.m */; };
 		CBA60FD818D74747002BF08B /* ProfileViewer.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA60FD718D74747002BF08B /* ProfileViewer.m */; };
+		CBA60FDA18D87D6C002BF08B /* startchat@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CBA60FD918D87D6C002BF08B /* startchat@2x.png */; };
 		CBA87E8A18ABB3DE00B272A8 /* bubbleMine.png in Resources */ = {isa = PBXBuildFile; fileRef = CBA87E8018ABB3DE00B272A8 /* bubbleMine.png */; };
 		CBA87E8C18ABB3DE00B272A8 /* bubbleSomeone.png in Resources */ = {isa = PBXBuildFile; fileRef = CBA87E8218ABB3DE00B272A8 /* bubbleSomeone.png */; };
 		CBA87E8E18ABB3DE00B272A8 /* missingAvatar.png in Resources */ = {isa = PBXBuildFile; fileRef = CBA87E8418ABB3DE00B272A8 /* missingAvatar.png */; };
@@ -553,6 +554,7 @@
 		CBA60FD118D711D1002BF08B /* StatusTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusTableViewCell.m; sourceTree = "<group>"; };
 		CBA60FD618D74747002BF08B /* ProfileViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewer.h; sourceTree = "<group>"; };
 		CBA60FD718D74747002BF08B /* ProfileViewer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewer.m; sourceTree = "<group>"; };
+		CBA60FD918D87D6C002BF08B /* startchat@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "startchat@2x.png"; sourceTree = "<group>"; };
 		CBA87E8018ABB3DE00B272A8 /* bubbleMine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubbleMine.png; sourceTree = "<group>"; };
 		CBA87E8218ABB3DE00B272A8 /* bubbleSomeone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubbleSomeone.png; sourceTree = "<group>"; };
 		CBA87E8418ABB3DE00B272A8 /* missingAvatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = missingAvatar.png; sourceTree = "<group>"; };
@@ -1492,6 +1494,7 @@
 		CB9B8A1118D34A9C004D68B2 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				CBA60FD918D87D6C002BF08B /* startchat@2x.png */,
 				CB9B8A1C18D34CB2004D68B2 /* razdelitel@2x.png */,
 				CB9B8A1218D34AC3004D68B2 /* email44x44px@2x.png */,
 				CB9B8A1318D34AC3004D68B2 /* fullname44x44px@2x.png */,
@@ -1740,6 +1743,7 @@
 				CB90DFAE18AA1A540010B58D /* README.txt in Resources */,
 				CBA87E8F18ABB3DE00B272A8 /* missingAvatar@2x.png in Resources */,
 				CB9B8A1918D34AC3004D68B2 /* heart22x22px@2x.png in Resources */,
+				CBA60FDA18D87D6C002BF08B /* startchat@2x.png in Resources */,
 				CB050E8B18C72AC7007AC62B /* bubbleSomeone@2x.png in Resources */,
 				CBA5166118D1FBD500437FDA /* background@2x.png in Resources */,
 				CB9B8A1B18D34AC3004D68B2 /* years-old44x44px@2x.png in Resources */,

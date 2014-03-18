@@ -31,6 +31,8 @@ static Profile* _sharedInstance;
         
         [self setName:[user name]];
         [self setLastName:[user lastName]];
+        [self setAge:[user age]];
+        [self setEmail:[user email]];
         [self setJabberID:[user jabberID]];
         [self setDistance:[user distance]];
         [self setStatus:[user status]];

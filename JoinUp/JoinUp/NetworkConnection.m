@@ -30,6 +30,8 @@ NSString *const KEY_LAST_NAME = @"last_name";
 NSString *const KEY_NAME = @"name";
 NSString *const KEY_STATUS = @"status";
 NSString *const KEY_LOGIN = @"login";
+NSString *const KEY_AGE = @"age";
+NSString* const KEY_EMAIL = @"email";
 
 - (BOOL) registration {
     return YES;
@@ -86,6 +88,8 @@ NSString *const KEY_LOGIN = @"login";
         
         [u setName:[user objectForKey:KEY_NAME]];
         [u setLastName:[user objectForKey:KEY_LAST_NAME]];
+        [u setAge:[user objectForKey:KEY_AGE]];
+        [u setEmail:[user objectForKey:KEY_EMAIL]];
         [u setJabberID:[user objectForKey:KEY_LOGIN]];
         [u setAvatar:[user objectForKey:KEY_AVATAR]];
         [u setStatus:[user objectForKey:KEY_STATUS]];
@@ -136,6 +140,8 @@ NSString *const KEY_LOGIN = @"login";
         
         [u setName:[data objectForKey:KEY_NAME]];
         [u setLastName:[data objectForKey:KEY_LAST_NAME]];
+        [u setAge:[data objectForKey:KEY_AGE]];
+        [u setEmail:[data objectForKey:KEY_EMAIL]];
         [u setJabberID:[data objectForKey:KEY_LOGIN]];
         [u setAvatar:[data objectForKey:KEY_AVATAR]];
         [u setStatus:[data objectForKey:KEY_STATUS]];
@@ -207,6 +213,8 @@ NSString *const KEY_LOGIN = @"login";
         
         [u setName:[user objectForKey:KEY_NAME]];
         [u setLastName:[user objectForKey:KEY_LAST_NAME]];
+        [u setAge:[user objectForKey:KEY_AGE]];
+        [u setEmail:[user objectForKey:KEY_EMAIL]];
         [u setJabberID:[user objectForKey:KEY_LOGIN]];
         [u setAvatar:[user objectForKey:KEY_AVATAR]];
         [u setStatus:[user objectForKey:KEY_STATUS]];

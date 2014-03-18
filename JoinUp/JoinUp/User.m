@@ -13,6 +13,7 @@
 @synthesize name;
 @synthesize lastName;
 @synthesize age;
+@synthesize email;
 @synthesize distance;
 @synthesize jabberID;
 @synthesize status;
@@ -52,6 +53,7 @@
     [self setName:[user name]];
     [self setLastName:[user lastName]];
     [self setAge:[user age]];
+    [self setEmail:[user email]];
     [self setDistance:[user distance]];
     [self setJabberID:[user jabberID]];
     [self setStatus:[user status]];

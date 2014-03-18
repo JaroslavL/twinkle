@@ -13,6 +13,7 @@
 @property (atomic, copy) NSString *name;
 @property (atomic, copy) NSString *lastName;
 @property (atomic, copy) NSString *age;
+@property (atomic, copy) NSString *email;
 @property (atomic, copy) NSString *jabberID;
 @property (atomic, copy) NSString *distance;
 @property (atomic, copy) NSString* status;

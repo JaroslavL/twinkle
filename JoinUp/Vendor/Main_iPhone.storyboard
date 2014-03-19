@@ -183,7 +183,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="p6s-xs-RNc" kind="relationship" relationship="rootViewController" id="rl2-6v-CqB"/>
+                        <segue destination="0DE-ej-3gs" kind="relationship" relationship="rootViewController" id="qNh-Zq-wKa"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zy9-h7-dEE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -200,7 +200,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="UserCell" id="M3F-QZ-sYd" customClass="UIUserCellTableViewCell">
-                                <rect key="frame" x="0.0" y="116" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="M3F-QZ-sYd" id="Gkt-80-w3h">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -240,7 +240,6 @@
                                     <outlet property="userAvatarImageView" destination="50Y-68-2gs" id="I6h-po-Cbo"/>
                                     <outlet property="userNameLabel" destination="a0N-mx-N3H" id="hnL-fK-7ez"/>
                                     <outlet property="userStatusImageView" destination="VYu-8u-AdL" id="v9p-Zs-mwu"/>
-                                    <segue destination="eUb-dz-240" kind="push" identifier="showChat" id="l1c-Bh-3OV"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -253,7 +252,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ctT-DL-Z45" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1390" y="-1422"/>
+            <point key="canvasLocation" x="2680" y="-1848"/>
         </scene>
         <!--Navigation Controller - Profile-->
         <scene sceneID="ZMG-ud-eRC">
@@ -363,6 +362,7 @@
                     <connections>
                         <outlet property="btnSaveChanges" destination="SzU-zL-PFj" id="8aK-eo-sSo"/>
                         <outlet property="dataUser" destination="kl7-Hv-Wl5" id="Hu3-lb-x80"/>
+                        <segue destination="eUb-dz-240" kind="push" identifier="showChat" id="X4W-CN-pMh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EgP-PS-koG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -572,8 +572,59 @@
             </objects>
             <point key="canvasLocation" x="-367" y="-154"/>
         </scene>
+        <!--Radar View Controller - Radar-->
+        <scene sceneID="88N-uN-h8e">
+            <objects>
+                <viewController id="0DE-ej-3gs" customClass="RadarViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qhE-1I-Ruh"/>
+                        <viewControllerLayoutGuide type="bottom" id="3gj-2D-hkb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="DVR-ZP-4CD">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="background@2x copy.png" translatesAutoresizingMaskIntoConstraints="NO" id="OmI-4Q-fHq">
+                                <rect key="frame" x="-142" y="-250" width="640" height="960"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wMO-cc-lY6">
+                                <rect key="frame" x="20" y="105" width="145" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JbQ-NB-SVr">
+                                <rect key="frame" x="175" y="105" width="125" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="2241.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="HBz-Gf-2F9">
+                                <rect key="frame" x="160" y="300" width="10" height="10"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Radar" image="radar.png" id="fbY-bM-u7V"/>
+                    <navigationItem key="navigationItem" title="Radar" id="XL5-IN-JPj"/>
+                    <connections>
+                        <outlet property="latitideLabal" destination="wMO-cc-lY6" id="Uso-cB-4vY"/>
+                        <outlet property="longitude" destination="JbQ-NB-SVr" id="gTP-Gs-VLl"/>
+                        <outlet property="myPointImage" destination="HBz-Gf-2F9" id="liO-9z-10k"/>
+                        <segue destination="eUb-dz-240" kind="push" identifier="showChat" id="JzU-Wq-RdC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Otp-Qr-UGB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1414" y="-1422"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="2241.jpg" width="500" height="500"/>
+        <image name="background@2x copy.png" width="640" height="960"/>
         <image name="button_login.png" width="240" height="42"/>
         <image name="chat.png" width="30" height="30"/>
         <image name="login.png" width="240" height="42"/>
@@ -589,6 +640,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="l1c-Bh-3OV"/>
+        <segue reference="JzU-Wq-RdC"/>
     </inferredMetricsTieBreakers>
 </document>

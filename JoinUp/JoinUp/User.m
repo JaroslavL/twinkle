@@ -20,6 +20,8 @@
 @synthesize avatar;
 @synthesize icon;
 @synthesize imgAvatar;
+@synthesize latitude;
+@synthesize longitude;
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super init];
@@ -59,6 +61,8 @@
     [self setStatus:[user status]];
     [self setIcon:[user icon]];
     [self setImgAvatar:[user imgAvatar]];
+    [self setLatitude:[user latitude]];
+    [self setLongitude:[user longitude]];
     
     [self setCountMessages:[user countMessages]];
     

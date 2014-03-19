@@ -162,9 +162,8 @@
     } else {
         
         //TODO: make NC singleton or init him in viewDidLoad
-        NetworkConnection *nc = [[NetworkConnection alloc] init];
         NSArray *login = [jid[0] componentsSeparatedByString:@"@"];
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"AnotherInterlocator" object:[nc getProfile:login[0]]];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"AnotherInterlocator" object:[NetworkConnection getProfile:login[0]]];
         
     }
 }

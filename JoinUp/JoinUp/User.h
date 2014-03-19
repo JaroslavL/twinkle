@@ -21,6 +21,9 @@
 @property (atomic, copy) NSString* icon;
 @property (atomic, copy) UIImage *imgAvatar;
 
+@property (atomic, copy) NSString *longitude;
+@property (atomic, copy) NSString *latitude;
+
 // User say: i am wrote message or not
 @property BOOL iAmWroteMessage;
 

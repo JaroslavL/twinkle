@@ -11,6 +11,7 @@
 
 @implementation ProfileViewer
 
+@synthesize currentUser;
 
 - (id)init {
     
@@ -36,9 +37,9 @@
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
 /*- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}*/
+ {
+ // Drawing code
+ }*/
 
 - (void)drawRect:(CGRect)rect profile: (Profile *)profile
 {
@@ -89,6 +90,8 @@
 {
     // Drawing code
     
+    currentUser = user;
+    
     //Profile *profile = [Profile sharedInstance];
     
     UILabel *lblLogin = [[UILabel alloc] initWithFrame:CGRectMake(91, 6, 100, 14)];
@@ -114,9 +117,10 @@
     UIImage * imgAvatar = [user imgAvatar];
     UIImageView *avatar = [[UIImageView alloc] initWithFrame:CGRectMake(14, 7, 59, 59)];
     [avatar setImage:[self maskImage:imgAvatar withMask:[UIImage imageNamed:@"maska.png"]]];
-        
+    
     UIButton *btnStartChatingWith = [[UIButton alloc] initWithFrame:CGRectMake(270, 25, 30, 30)];
     [btnStartChatingWith setBackgroundImage:[UIImage imageNamed:@"startchat.png"] forState:UIControlStateNormal];
+    [btnStartChatingWith addTarget:self action:@selector(btnStartChatingWith) forControlEvents:UIControlEventTouchDown];
     [self addSubview:btnStartChatingWith];
     
     //UIImage *imgStatus = [profile icon];
@@ -151,6 +155,10 @@
     CGImageRef masked = CGImageCreateWithMask([image CGImage], mask);
     return [UIImage imageWithCGImage:masked];
     
+}
+
+- (void)btnStartChatingWith {
+    [_delegate performSegueWithIdentifier:@"showChat" sender:currentUser];
 }
 
 @end

@@ -39,8 +39,7 @@
     _managerMessages = [ManagerMessages sharedInstance];
     
     if ([[_managerMessages UsersWhosemMessagesaArenNotRead] count]) {
-        NetworkConnection *nc = [[NetworkConnection alloc] init];
-        [_activeChats addObjectsFromArray:[nc getProfiles:[_managerMessages UsersWhosemMessagesaArenNotRead]]];
+        [_activeChats addObjectsFromArray:[NetworkConnection getProfiles:[_managerMessages UsersWhosemMessagesaArenNotRead]]];
     }
     
     [[NSNotificationCenter defaultCenter] addObserver:self

@@ -94,9 +94,8 @@
     
     if (!chatIsActive) {
         
-        NetworkConnection *nc = [[NetworkConnection alloc] init];
         NSArray *login = [[[notification object] fromStr] componentsSeparatedByString:@"@"];
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"AnotherInterlocator" object:[nc getProfile:login[0]]];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"AnotherInterlocator" object:[NetworkConnection getProfile:login[0]]];
         
         _countMessage++;
         

@@ -11,6 +11,9 @@
 
 @interface ProfileViewer : UIView
 
+@property id delegate;
+@property (nonatomic, strong) User* currentUser;
+
 - (void)drawRect:(CGRect)rect profile: (Profile *)profile;
 - (void)drawRect:(CGRect)rect user: (User *)user;
 
@@ -18,5 +21,7 @@
 - (void)showUserProfile: (User *)user;
 
 - (UIImage*) maskImage:(UIImage *)image withMask:(UIImage *)maskImage;
+
+- (void)btnStartChatingWith;
 
 @end

@@ -7,6 +7,11 @@
 //
 
 #import "RadarViewController.h"
+#import "RadarLocation.h"
+#import "RadarUserLocationButton.h"
+
+#define CENTRAL_POSITION_X 160
+#define CENTRAL_POSITION_Y 300
 
 @interface RadarViewController ()
 
@@ -16,6 +21,7 @@
 
 @synthesize nearbyUsers;
 @synthesize chatViewController;
+@synthesize profileViewer;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -31,10 +37,21 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    buttonArray = [NSMutableArray new];
+    profileViewer = [[ProfileViewer alloc]init];
+    profileViewer.delegate = self;
+    [self.view addSubview:profileViewer];
+    [NSTimer scheduledTimerWithTimeInterval:5.0f
+                                     target:self
+                                   selector:@selector(updateRadar)
+                                   userInfo:nil
+                                    repeats:YES];
+    
+    profileViewer.hidden =YES;
     
     //TODO: get near users every time
-    NetworkConnection *connection = [[NetworkConnection alloc] init];
-    nearbyUsers = [connection getNearbyUsers];
+    
+    [self drawRadarPoints];
     
     [_tableNearUsers setDelegate:self];
     [_tableNearUsers setDataSource:self];
@@ -82,11 +99,77 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"showChat"]) {
-        NSIndexPath *indexPath = [self.tableNearUsers indexPathForSelectedRow];
-        NSDate *object = nearbyUsers[indexPath.row];
+        
+        /// NSIndexPath *indexPath = [self.tableNearUsers indexPathForSelectedRow];
+        NSDate *object = sender;
         [[NSNotificationCenter defaultCenter] postNotificationName:@"NewActiveChat" object:object];
-        [[segue destinationViewController] setIsCurrentInterlocutor:object];
+        [[segue destinationViewController] setIsCurrentInterlocutor:sender];
     }
+}
+
+- (void) drawRadarPoints
+{
+    /*
+     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT,
+     (unsigned long)NULL), ^(void) {
+     nearbyUsers = [NetworkConnection getNearbyUsers];
+     [self createButtonArrayWithUsers:nearbyUsers];
+     });*/
+    nearbyUsers = [NetworkConnection getNearbyUsers];
+    [self createButtonArrayWithUsers:nearbyUsers];
+    [self displayButtonArray];
+}
+
+- (void) updateRadar
+{
+    CLLocationCoordinate2D coord = [[RadarLocation sharedInstance] findCurrentLocation];
+    self.latitideLabal.text = [NSString stringWithFormat:@"%f",coord.latitude];
+    self.longitude.text = [NSString stringWithFormat:@"%f",coord.longitude];
+    
+    for (UIButton *btn in buttonArray)
+    {
+        [btn removeFromSuperview];
+    }
+    [buttonArray removeAllObjects];
+    [self.view setNeedsDisplay];
+    
+    [self drawRadarPoints];
+}
+
+- (void) createButtonArrayWithUsers:(NSArray *) users
+{
+    for (User *user in users)
+    {
+        RadarUserLocationButton *newButton = [[RadarUserLocationButton alloc]initWithUser:user];
+        [newButton addTarget:self
+                      action:@selector(tapRadarUserLocationButton:)
+            forControlEvents:UIControlEventTouchUpInside];
+        [buttonArray addObject:newButton];
+    }
+}
+
+- (void) displayButtonArray
+{
+    for (RadarUserLocationButton *btn in buttonArray)
+    {
+        btn.frame = CGRectMake(CENTRAL_POSITION_X+btn.coordinate.x, CENTRAL_POSITION_Y+btn.coordinate.y, 10, 10);
+        [self.view addSubview:btn];
+    }
+    
+}
+
+- (void) tapRadarUserLocationButton:(RadarUserLocationButton*) sender
+{
+    [profileViewer showUserProfile:[sender getUser]];
+    profileViewer.hidden = NO;
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    UITouch *touch = [[event allTouches] anyObject];
+    CGPoint location = [touch locationInView:touch.view];
+    if (location.y < 73 ) return;
+    [profileViewer setHidden:YES];
 }
 
 @end

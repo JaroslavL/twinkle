@@ -65,8 +65,7 @@
                                            andHostName:@"192.168.1.100"];
         if ([xmppwrapper connect]) {
             
-            NetworkConnection *nc = [[NetworkConnection alloc] init];
-            profile = [[Profile alloc] initWithUserData:[nc getProfile:_txtUserName.text]];
+            profile = [[Profile alloc] initWithUserData:[NetworkConnection getProfile:_txtUserName.text]];
             
             managerMessage = [ManagerMessages sharedInstance];
             

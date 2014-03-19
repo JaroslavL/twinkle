@@ -34,6 +34,7 @@
     [_dataUser setDataSource:self];
     
     _profileViewer = [[ProfileViewer alloc] init];
+    _profileViewer.delegate = self;
     [_profileViewer showProfile:profile];
     [self.view addSubview:_profileViewer];
     

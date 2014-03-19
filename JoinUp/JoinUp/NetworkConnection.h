@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
+#import "RadarLocation.h"
 #import "User.h"
 #import "Profile.h"
 
@@ -16,8 +18,10 @@
 @property (atomic) NSData *responseData;*/
 
 - (BOOL) setProfile: (Profile *)profile;
-- (User *) getProfile: (NSString *)jid;
-- (NSMutableArray *) getProfiles: (NSArray *)jids;
-- (NSArray*) getNearbyUsers;
++ (User *)           getProfile: (NSString *)jid;
++ (NSMutableArray *) getProfiles: (NSArray *)jids;
++ (NSArray*)         getNearbyUsers;
+
++ (BOOL) sendCoordinate:(CLLocationCoordinate2D) coordinate;
 
 @end

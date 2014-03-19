@@ -8,15 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import "User.h"
+#import "Profile.h"
 
 @interface NetworkConnection : NSObject
 
 /*@property (atomic) NSMutableURLRequest *request;
 @property (atomic) NSData *responseData;*/
 
-- (BOOL) registration;
-- (BOOL) login;
-- (BOOL) setProfile;
+- (BOOL) setProfile: (Profile *)profile;
 - (User *) getProfile: (NSString *)jid;
 - (NSMutableArray *) getProfiles: (NSArray *)jids;
 - (NSArray*) getNearbyUsers;

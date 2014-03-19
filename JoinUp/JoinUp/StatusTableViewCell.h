@@ -10,6 +10,6 @@
 
 @interface StatusTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *icon;
-@property (weak, nonatomic) IBOutlet UITextField *labelStatus;
+@property (weak, nonatomic) IBOutlet UITextField *textStatus;
 
 @end

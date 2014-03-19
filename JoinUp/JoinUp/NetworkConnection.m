@@ -22,7 +22,8 @@ NSString *const NS_KEY_USERS = @"users";
 NSString *const NS_TEST_GET_USERS_URL = @"http://192.168.1.100/other/index.php?login=test&longitude=0.000000&latitude=0.000000";
 NSString *const NS_TEST_GET_PROFILE_URL = @"http://192.168.1.100/profile/index.php?login=";
 NSString *const NS_TEST_GET_PROFILES_URL = @"http://192.168.1.100/profile/profiles.php?";
-//TODO: insert url to get profile data
+
+NSString *const NS_TEST_SET_PROFILES_URL = @"http://192.168.1.100/profile/setprofiledata.php?";
 
 NSString *const KEY_USERS = @"users";
 NSString *const KEY_AVATAR = @"avatar";
@@ -33,16 +34,31 @@ NSString *const KEY_LOGIN = @"login";
 NSString *const KEY_AGE = @"age";
 NSString* const KEY_EMAIL = @"email";
 
-- (BOOL) registration {
-    return YES;
-}
 
-- (BOOL) login {
-    return YES;
-}
-
-- (BOOL) setProfile {
-    return YES;
+- (BOOL) setProfile: (Profile *)profile {
+    
+    NSMutableData *receiveData = [[NSMutableData alloc] init];
+    
+    NSString *urlstr = NS_TEST_SET_PROFILES_URL;
+    //TODO: add profile's data
+    
+    /*urlstr = [urlstr stringByAppendingString:_txtUserName.text];
+    urlstr = [urlstr stringByAppendingString:@"&password="];
+    urlstr = [urlstr stringByAppendingString:[_txtUserPassword.text md5_hex]];*/
+    
+    NSURL *url = [NSURL URLWithString:urlstr];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    
+    NSURLResponse *response = [[NSURLResponse alloc] init];
+    
+    [receiveData appendData:[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil]];
+    
+    NSString *answer = [[NSString alloc] initWithData:receiveData
+                                             encoding:NSUTF8StringEncoding];
+    
+    NSLog(@"%@", answer);
+    
+    return (BOOL)answer;
 }
 
 - (NSString*)formUrlGetNearbyUsers

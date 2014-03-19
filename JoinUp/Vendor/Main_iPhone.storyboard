@@ -312,7 +312,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="icon" destination="EeO-4c-7qN" id="X2G-y4-gvn"/>
-                                            <outlet property="labelStatus" destination="T75-5x-bto" id="kyH-UB-ZWa"/>
+                                            <outlet property="textStatus" destination="T75-5x-bto" id="B76-e7-Frg"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailDisclosureButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ProfileCell" editingAccessoryType="detailDisclosureButton" id="Pcg-Iy-MDE" customClass="ProfileTableViewCell">
@@ -346,11 +346,22 @@
                                 </prototypes>
                                 <sections/>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SzU-zL-PFj">
+                                <rect key="frame" x="20" y="383" width="268" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Save changes">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnSaveChanges:" destination="C1p-e2-Zdl" eventType="touchUpInside" id="YY7-nh-UhV"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="PNG-U1-ryI"/>
                     <connections>
+                        <outlet property="btnSaveChanges" destination="SzU-zL-PFj" id="8aK-eo-sSo"/>
                         <outlet property="dataUser" destination="kl7-Hv-Wl5" id="Hu3-lb-x80"/>
                     </connections>
                 </viewController>

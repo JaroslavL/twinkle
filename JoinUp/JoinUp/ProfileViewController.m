@@ -33,9 +33,11 @@
     [_dataUser setDelegate:self];
     [_dataUser setDataSource:self];
     
-    ProfileViewer *pv = [[ProfileViewer alloc] init];
-    [pv showProfile:profile showBtnStartChatingWith:NO];
-    [self.view addSubview:pv];
+    _profileViewer = [[ProfileViewer alloc] init];
+    [_profileViewer showProfile:profile];
+    [self.view addSubview:_profileViewer];
+    
+    [[self btnSaveChanges] setEnabled:NO];
     
 }
 
@@ -59,12 +61,12 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 0) {
+    if (!indexPath.row) {
         return 22;
     } else return 44;
 }
@@ -80,31 +82,48 @@
             [[cellStatus icon] setHighlightedImage:[UIImage imageNamed:@"heart22x22px.png"]];
             
             if ([profile status]) {
-                [[cellStatus labelStatus] setText:[profile status]];
+                [[cellStatus textStatus] setText:[profile status]];
             } else {
-                [[cellStatus labelStatus] setText:@"n/a"];
+                [[cellStatus textStatus] setText:@"n/a"];
             }
             
-            [[cellStatus labelStatus] setDelegate:self];
+            [[cellStatus textStatus] setDelegate:self];
+            
+            [[NSNotificationCenter defaultCenter] addObserver:self
+                                                     selector:@selector(textFieldChanged:)
+                                                         name:UITextFieldTextDidChangeNotification
+                                                       object:[cellStatus textStatus]];
             return cellStatus;
         case 1:
             [[cell imgCell] setHighlighted:YES];
             [[cell imgCell] setHighlightedImage:[UIImage imageNamed:@"fullname44x44px.png"]];
             [[cell textCell] setText:[NSString stringWithFormat:@"%@ %@", [profile name], [profile lastName]]];
             [[cell textCell] setDelegate:self];
+            
+            [[NSNotificationCenter defaultCenter] addObserver:self
+                                                     selector:@selector(textFieldChanged:)
+                                                         name:UITextFieldTextDidChangeNotification
+                                                       object:[cell textCell]];
+            
             break;
         case 2:
             [[cell imgCell] setHighlighted:YES];
             [[cell imgCell] setHighlightedImage:[UIImage imageNamed:@"years-old44x44px.png"]];
             
-            if ([profile status]) {
+            if (![[profile age] isEqualToString:@"0"]) {
                 [[cell textCell] setText:[profile age]];
             } else {
-                [[cell textCell] setText:@"n/a"];
+                [[cell textCell] setText:@"Set you age"];
             }
             
             [[cell textCell] setDelegate:self];
             [cell setAccessoryType:UITableViewCellAccessoryNone];
+            
+            [[NSNotificationCenter defaultCenter] addObserver:self
+                                                     selector:@selector(textFieldChanged:)
+                                                         name:UITextFieldTextDidChangeNotification
+                                                       object:[cell textCell]];
+            
             break;
         case 3:
             [[cell imgCell] setHighlighted:YES];
@@ -112,6 +131,12 @@
             [[cell textCell] setText:[profile email]];
             [[cell textCell] setDelegate:self];
             [cell setAccessoryType:UITableViewCellAccessoryNone];
+            
+            [[NSNotificationCenter defaultCenter] addObserver:self
+                                                     selector:@selector(textFieldChanged:)
+                                                         name:UITextFieldTextDidChangeNotification
+                                                       object:[cell textCell]];
+            
             break;
         case 4:
             [[cell imgCell] setHighlighted:YES];
@@ -157,10 +182,29 @@
     [UIView setAnimationBeginsFromCurrentState:YES];
     self.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     [UIView commitAnimations];
+    
+    
 }
 
 - (IBAction)keyboardRetnKeyPress: (id)sender {
     [sender resignFirstResponder];
+}
+
+- (IBAction)btnSaveChanges:(id)sender {
+    NetworkConnection *nc = [[NetworkConnection alloc] init];
+    [[self btnSaveChanges] setEnabled:NO];
+    
+    if ([nc setProfile: profile]) {
+        [_profileViewer showProfile:profile];
+    }
+}
+
+- (void)textFieldChanged: (UITextField *)txtField {
+    [[self btnSaveChanges] setEnabled:YES];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 

@@ -46,4 +46,25 @@ static Profile* _sharedInstance;
     return _sharedInstance;
 }
 
+- (id)initWithProfileData: (Profile *)profile {
+    
+    if (self = [super init]) {
+        
+        [self setName:[profile name]];
+        [self setLastName:[profile lastName]];
+        [self setAge:[profile age]];
+        [self setEmail:[profile email]];
+        [self setJabberID:[profile jabberID]];
+        [self setDistance:[profile distance]];
+        [self setStatus:[profile status]];
+        [self setAvatar:[profile avatar]];
+        [self setIcon:[profile icon]];
+        [self setImgAvatar:[profile imgAvatar]];
+        
+        _sharedInstance = self;
+    }
+    
+    return _sharedInstance;
+}
+
 @end

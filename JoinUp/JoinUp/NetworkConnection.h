@@ -17,7 +17,8 @@
 /*@property (atomic) NSMutableURLRequest *request;
 @property (atomic) NSData *responseData;*/
 
-- (BOOL) setProfile: (Profile *)profile;
++ (NSString *) setProfile: (NSString *)status name: (NSString *)name lastname: (NSString *)lastname age: (NSString *)age email: (NSString *)email;
++ (NSString *) setNewPasswd: (NSString *) newPasswd;
 + (User *)           getProfile: (NSString *)jid;
 + (NSMutableArray *) getProfiles: (NSArray *)jids;
 + (NSArray*)         getNearbyUsers;

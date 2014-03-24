@@ -15,6 +15,17 @@
 
 @interface ProfileViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UISplitViewControllerDelegate, UITextFieldDelegate> {
     Profile *profile;
+    
+    NSNumber *statusTag;
+    NSNumber *nameTag;
+    NSNumber *lastnameTag;
+    NSNumber *ageTag;
+    NSNumber *emailTag;
+    
+    NSMutableArray *changedFields;
+    
+    NSNumber *editableField;
+    
 }
 
 @property (readwrite, nonatomic) Profile *profile;
@@ -26,6 +37,8 @@
 - (IBAction)keyboardRetnKeyPress: (id)sender;
 - (IBAction)btnSaveChanges:(id)sender;
 
-- (void)textFieldChanged: (UITextField *)txtField;
+- (void)textFieldChanged: (NSNotification *)notification;
+
+- (BOOL)CheckingInput: (NSString *)name lastname:(NSString *)lastname age: (NSString *)age email:(NSString *)email;
 
 @end

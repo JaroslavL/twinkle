@@ -66,6 +66,7 @@
         if ([xmppwrapper connect]) {
             
             profile = [[Profile alloc] initWithUserData:[NetworkConnection getProfile:_txtUserName.text]];
+            [profile setPasswd:[_txtUserPassword.text md5_hex]];
             
             managerMessage = [ManagerMessages sharedInstance];
             

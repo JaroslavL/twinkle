@@ -10,8 +10,11 @@
 
 @interface Profile : User
 
+@property (nonatomic, strong) NSString *passwd;
+
 + (Profile *)sharedInstance;
 
 - (id)initWithUserData: (User *)user;
+- (id)initWithProfileData: (Profile *)profile;
 
 @end

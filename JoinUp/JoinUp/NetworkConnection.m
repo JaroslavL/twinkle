@@ -23,7 +23,7 @@ NSString *const NS_TEST_GET_USERS_URL = @"http://192.168.1.100/other/index.php?l
 NSString *const NS_TEST_GET_USERS_URL_LL = @"http://192.168.1.100/radar/index.php?login=test";
 NSString *const NS_TEST_GET_USERS_URL_LL1 = @"http://192.168.1.100/other/index.php?login=test";
 
-NSString *const NS_TEST_SET_PROFILES_URL = @"http://192.168.1.100/profile/setprofiledata.php?";
+NSString *const NS_TEST_SET_PROFILES_URL = @"http://192.168.1.100/profile/change.php?";
 
 NSString *const NS_TEST_GET_PROFILE_URL = @"http://192.168.1.100/profile/index.php?login=";
 NSString *const NS_TEST_GET_PROFILES_URL = @"http://192.168.1.100/profile/profiles.php?";
@@ -35,6 +35,8 @@ NSString *const KEY_LAST_NAME = @"last_name";
 NSString *const KEY_NAME = @"name";
 NSString *const KEY_STATUS = @"status";
 NSString *const KEY_LOGIN = @"login";
+NSString *const KEY_AGE = @"age";
+NSString *const KEY_EMAIL = @"email";
 
 - (BOOL) registration {
     return YES;
@@ -44,30 +46,95 @@ NSString *const KEY_LOGIN = @"login";
     return YES;
 }
 
-- (BOOL) setProfile: (Profile *)profile {
++ (NSString *) setProfile: (NSString *)status name: (NSString *)name lastname: (NSString *)lastname age: (NSString *)age email: (NSString *)email {
     
     NSMutableData *receiveData = [[NSMutableData alloc] init];
     
     NSString *urlstr = NS_TEST_SET_PROFILES_URL;
-    //TODO: add profile's data
     
-    /*urlstr = [urlstr stringByAppendingString:_txtUserName.text];
-     urlstr = [urlstr stringByAppendingString:@"&password="];
-     urlstr = [urlstr stringByAppendingString:[_txtUserPassword.text md5_hex]];*/
+    if (status) {
+        
+        urlstr = [urlstr stringByAppendingString:
+                  [NSString stringWithFormat:@"status=%@&", status]];
+    }
     
-    NSURL *url = [NSURL URLWithString:urlstr];
+    if (name) {
+        
+        urlstr = [urlstr stringByAppendingString:
+                  [NSString stringWithFormat:@"name=%@&", name]];
+    }
+    
+    if (lastname) {
+        
+        urlstr = [urlstr stringByAppendingString:
+                  [NSString stringWithFormat:@"lastname=%@&", lastname]];
+    }
+    
+    if (age) {
+        
+        urlstr = [urlstr stringByAppendingString:
+                  [NSString stringWithFormat:@"age=%@&", age]];
+    }
+    
+    if (email) {
+        
+        urlstr = [urlstr stringByAppendingString:
+                  [NSString stringWithFormat:@"email=%@&", email]];
+    }
+    
+    urlstr = [urlstr stringByAppendingString:
+              [NSString stringWithFormat:@"login=%@&", [[Profile sharedInstance] jabberID]]];
+    
+    urlstr = [urlstr stringByAppendingString:
+              [NSString stringWithFormat:@"password=%@&", [[Profile sharedInstance] passwd]]];
+    
+    NSURL *url = [NSURL URLWithString:[urlstr stringByAddingPercentEscapesUsingEncoding:
+                                                NSUTF8StringEncoding]];
+    
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     
     NSURLResponse *response = [[NSURLResponse alloc] init];
     
-    [receiveData appendData:[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil]];
+    [receiveData appendData:[NSURLConnection sendSynchronousRequest:request
+                                                  returningResponse:&response error:nil]];
     
     NSString *answer = [[NSString alloc] initWithData:receiveData
                                              encoding:NSUTF8StringEncoding];
     
-    NSLog(@"%@", answer);
+    return answer;
+}
+
++ (NSString *) setNewPasswd: (NSString *) newPasswd {
     
-    return (BOOL)answer;
+    NSMutableData *receiveData = [[NSMutableData alloc] init];
+    
+    NSString *urlstr = NS_TEST_SET_PROFILES_URL;
+    
+    urlstr = [urlstr stringByAppendingString:
+              [NSString stringWithFormat:@"login=%@&", [[Profile sharedInstance] jabberID]]];
+    
+    urlstr = [urlstr stringByAppendingString:
+              [NSString stringWithFormat:@"password=%@&", [[Profile sharedInstance] passwd]]];
+    
+    urlstr = [urlstr stringByAppendingString:
+              [NSString stringWithFormat:@"newpassword=%@&", newPasswd]];
+    
+    NSURL *url = [NSURL URLWithString:[urlstr stringByAddingPercentEscapesUsingEncoding:
+                                       NSUTF8StringEncoding]];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    
+    NSURLResponse *response = [[NSURLResponse alloc] init];
+    
+    [receiveData appendData:[NSURLConnection sendSynchronousRequest:request
+                                                  returningResponse:&response error:nil]];
+    
+    NSString *answer = [[NSString alloc] initWithData:receiveData
+                                             encoding:NSUTF8StringEncoding];
+    
+    
+    
+    return answer;
 }
 
 - (NSString*)formUrlGetNearbyUsers
@@ -120,6 +187,8 @@ NSString *const KEY_LOGIN = @"login";
         
         [u setName:[user objectForKey:KEY_NAME]];
         [u setLastName:[user objectForKey:KEY_LAST_NAME]];
+        [u setAge:[user objectForKey:KEY_AGE]];
+        [u setEmail:[user objectForKey:KEY_EMAIL]];
         [u setJabberID:[user objectForKey:KEY_LOGIN]];
         [u setAvatar:[user objectForKey:KEY_AVATAR]];
         [u setStatus:[user objectForKey:KEY_STATUS]];
@@ -172,11 +241,15 @@ NSString *const KEY_LOGIN = @"login";
         
         [u setName:[data objectForKey:KEY_NAME]];
         [u setLastName:[data objectForKey:KEY_LAST_NAME]];
+        [u setAge:[data objectForKey:KEY_AGE]];
+        [u setEmail:[data objectForKey:KEY_EMAIL]];
         [u setJabberID:[data objectForKey:KEY_LOGIN]];
         [u setAvatar:[data objectForKey:KEY_AVATAR]];
         [u setStatus:[data objectForKey:KEY_STATUS]];
-        //[u setIAmWroteMessage:NO];
         [u setCountMessages:0];
+        
+        [u setLongitude:[data objectForKey:@"longitude"]];
+        [u setLatitude:[data objectForKey:@"latitude"]];
         
         id path = [data objectForKey:KEY_AVATAR];
         NSURL *url = [NSURL URLWithString:path];
@@ -188,6 +261,7 @@ NSString *const KEY_LOGIN = @"login";
     
     return u;
 }
+
 + (NSMutableArray *) getProfiles: (NSArray *)jids {
     
     if (!jids) {
@@ -205,9 +279,7 @@ NSString *const KEY_LOGIN = @"login";
         i++;
     }
     
-    NSLog(@"%@", url);
     i = 0;
-    
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]
                                                            cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData
@@ -242,15 +314,15 @@ NSString *const KEY_LOGIN = @"login";
         
         [u setName:[user objectForKey:KEY_NAME]];
         [u setLastName:[user objectForKey:KEY_LAST_NAME]];
+        [u setAge:[user objectForKey:KEY_AGE]];
+        [u setEmail:[user objectForKey:KEY_EMAIL]];
         [u setJabberID:[user objectForKey:KEY_LOGIN]];
         [u setAvatar:[user objectForKey:KEY_AVATAR]];
         [u setStatus:[user objectForKey:KEY_STATUS]];
-        /*for (User *uu in jids) {
-         
-         }*/
         [u setCountMessages:[[jids objectAtIndex:i] countMessages]];
-        i++;
-        //[u setCountMessages:0];
+        
+        [u setLongitude:[user objectForKey:@"longitude"]];
+        [u setLatitude:[user objectForKey:@"latitude"]];
         
         id path = [user objectForKey:KEY_AVATAR];
         NSURL *url = [NSURL URLWithString:path];
@@ -259,6 +331,9 @@ NSString *const KEY_LOGIN = @"login";
         [u setImgAvatar:[[UIImage alloc] initWithData:avatar]];
         
         [profiles addObject:u];
+        
+        i++;
+
     }
     
     return profiles;

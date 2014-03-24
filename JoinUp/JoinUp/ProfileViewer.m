@@ -13,13 +13,54 @@
 
 @synthesize currentUser;
 
+@synthesize lblLogin;
+@synthesize lblFullName;
+@synthesize lblAge;
+@synthesize lblStatus;
+@synthesize avatar;
+
+@synthesize btnStartChatingWith;
+
 - (id)init {
     
     self = [super init];
     if (self) {
         // Initialization code
+        
         [self setFrame:CGRectMake(0, 65, 320, 73)];
-        [self setBackgroundColor:[UIColor grayColor]];
+        [self setBackgroundColor:[UIColor whiteColor]];
+        
+        lblLogin = [[UILabel alloc] initWithFrame:CGRectMake(91, 6, 100, 14)];
+        [lblLogin setFont:[UIFont fontWithName:@"Helvetica" size:14]];
+        
+        lblFullName = [[UILabel alloc] initWithFrame:CGRectMake(91, 20, 200, 12)];
+        [lblFullName setFont:[UIFont fontWithName:@"Helvetica" size:12]];
+        
+        lblAge = [[UILabel alloc] initWithFrame:CGRectMake(91, 32, 50, 10)];
+        [lblAge setFont:[UIFont fontWithName:@"Helvetica" size:10]];
+        
+        lblStatus = [[UILabel alloc] initWithFrame:CGRectMake(91, 50, 200, 10)];
+        [lblStatus setFont:[UIFont fontWithName:@"Helvetica" size:10]];
+        
+        avatar = [[UIImageView alloc] initWithFrame:CGRectMake(14, 7, 59, 59)];
+        [avatar setUserInteractionEnabled:YES];
+        UITapGestureRecognizer *singlTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showPhoto)];
+        [singlTap setNumberOfTapsRequired:1];
+        [avatar addGestureRecognizer:singlTap];
+        
+        btnStartChatingWith = [[UIButton alloc] initWithFrame:CGRectMake(270, 25, 30, 30)];
+        [btnStartChatingWith setBackgroundImage:[UIImage imageNamed:@"startchat.png"]
+                                                forState:UIControlStateNormal];
+        [btnStartChatingWith addTarget:self action:@selector(startChatingWith)
+                                                forControlEvents:UIControlEventTouchDown];
+        
+        [self addSubview:lblLogin];
+        [self addSubview:lblFullName];
+        [self addSubview:lblAge];
+        [self addSubview:lblStatus];
+        [self addSubview:avatar];
+        [self addSubview:btnStartChatingWith];
+        
     }
     return self;
 }
@@ -45,21 +86,9 @@
 {
     // Drawing code
     
-    //Profile *profile = [Profile sharedInstance];
-    
-    UILabel *lblLogin = [[UILabel alloc] initWithFrame:CGRectMake(91, 6, 100, 14)];
-    [lblLogin setFont:[UIFont fontWithName:@"Helvetica" size:14]];
-    [lblLogin setBackgroundColor:[UIColor redColor]];
     [lblLogin setText:[profile jabberID]];
     
-    UILabel *lblFullName = [[UILabel alloc] initWithFrame:CGRectMake(91, 20, 200, 12)];
-    [lblFullName setFont:[UIFont fontWithName:@"Helvetica" size:12]];
-    [lblFullName setBackgroundColor:[UIColor greenColor]];
     [lblFullName setText:[NSString stringWithFormat:@"%@ %@", [profile name], [profile lastName]]];
-    
-    UILabel *lblAge = [[UILabel alloc] initWithFrame:CGRectMake(91, 32, 50, 10)];
-    [lblAge setFont:[UIFont fontWithName:@"Helvetica" size:10]];
-    [lblAge setBackgroundColor:[UIColor blueColor]];
     
     if ([[profile age] isEqualToString:@"0"]) {
         [lblAge setText:@"Unknown"];
@@ -67,23 +96,15 @@
         [lblAge setText:[profile age]];
     }
     
-    UILabel *lblStatus = [[UILabel alloc] initWithFrame:CGRectMake(91, 50, 200, 10)];
-    [lblStatus setFont:[UIFont fontWithName:@"Helvetica" size:10]];
-    [lblStatus setBackgroundColor:[UIColor greenColor]];
     [lblStatus setText:[profile status]];
     
     UIImage * imgAvatar = [profile imgAvatar];
-    UIImageView *avatar = [[UIImageView alloc] initWithFrame:CGRectMake(14, 7, 59, 59)];
     [avatar setImage:[self maskImage:imgAvatar withMask:[UIImage imageNamed:@"maska.png"]]];
+    
+    [btnStartChatingWith setHidden:YES];
     
     //UIImage *imgStatus = [profile icon];
     
-    [self addSubview:lblLogin];
-    [self addSubview:lblFullName];
-    [self addSubview:lblAge];
-    [self addSubview:lblStatus];
-    [self addSubview:avatar];
-    //[self addSubview:[imgStatus]];
 }
 
 - (void)drawRect:(CGRect)rect user: (User *)user
@@ -92,45 +113,19 @@
     
     currentUser = user;
     
-    //Profile *profile = [Profile sharedInstance];
-    
-    UILabel *lblLogin = [[UILabel alloc] initWithFrame:CGRectMake(91, 6, 100, 14)];
-    [lblLogin setFont:[UIFont fontWithName:@"Helvetica" size:14]];
-    [lblLogin setBackgroundColor:[UIColor redColor]];
     [lblLogin setText:[user jabberID]];
     
-    UILabel *lblFullName = [[UILabel alloc] initWithFrame:CGRectMake(91, 20, 200, 12)];
-    [lblFullName setFont:[UIFont fontWithName:@"Helvetica" size:12]];
-    [lblFullName setBackgroundColor:[UIColor greenColor]];
     [lblFullName setText:[NSString stringWithFormat:@"%@ %@", [user name], [user lastName]]];
     
-    UILabel *lblAge = [[UILabel alloc] initWithFrame:CGRectMake(91, 32, 50, 10)];
-    [lblAge setFont:[UIFont fontWithName:@"Helvetica" size:10]];
-    [lblAge setBackgroundColor:[UIColor blueColor]];
     [lblAge setText:[user age]];
     
-    UILabel *lblStatus = [[UILabel alloc] initWithFrame:CGRectMake(91, 50, 200, 10)];
-    [lblStatus setFont:[UIFont fontWithName:@"Helvetica" size:10]];
-    [lblStatus setBackgroundColor:[UIColor greenColor]];
     [lblStatus setText:[user status]];
     
     UIImage * imgAvatar = [user imgAvatar];
-    UIImageView *avatar = [[UIImageView alloc] initWithFrame:CGRectMake(14, 7, 59, 59)];
     [avatar setImage:[self maskImage:imgAvatar withMask:[UIImage imageNamed:@"maska.png"]]];
-    
-    UIButton *btnStartChatingWith = [[UIButton alloc] initWithFrame:CGRectMake(270, 25, 30, 30)];
-    [btnStartChatingWith setBackgroundImage:[UIImage imageNamed:@"startchat.png"] forState:UIControlStateNormal];
-    [btnStartChatingWith addTarget:self action:@selector(btnStartChatingWith) forControlEvents:UIControlEventTouchDown];
-    [self addSubview:btnStartChatingWith];
     
     //UIImage *imgStatus = [profile icon];
     
-    [self addSubview:lblLogin];
-    [self addSubview:lblFullName];
-    [self addSubview:lblAge];
-    [self addSubview:lblStatus];
-    [self addSubview:avatar];
-    //[self addSubview:[imgStatus]];
 }
 
 - (void)showProfile: (Profile *)profile {
@@ -157,8 +152,12 @@
     
 }
 
-- (void)btnStartChatingWith {
+- (void)startChatingWith {
     [_delegate performSegueWithIdentifier:@"showChat" sender:currentUser];
+}
+
+- (void)showPhoto {
+    [_delegate performSegueWithIdentifier:@"showPhoto" sender:nil];
 }
 
 @end

@@ -197,6 +197,7 @@
 		CBA87E9218ABB3DE00B272A8 /* typingSomeone.png in Resources */ = {isa = PBXBuildFile; fileRef = CBA87E8818ABB3DE00B272A8 /* typingSomeone.png */; };
 		CBA87E9318ABB3DE00B272A8 /* typingSomeone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CBA87E8918ABB3DE00B272A8 /* typingSomeone@2x.png */; };
 		CBA87E9C18ACFD7B00B272A8 /* NSString+hash.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA87E9B18ACFD7B00B272A8 /* NSString+hash.m */; };
+		CBB39A7C18DC59AE002E486D /* ChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBB39A7B18DC59AE002E486D /* ChangePasswordViewController.m */; };
 		D908EC0718A914EB00424A3B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D908EC0618A914EB00424A3B /* Foundation.framework */; };
 		D908EC0918A914EB00424A3B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D908EC0818A914EB00424A3B /* CoreGraphics.framework */; };
 		D908EC0B18A914EB00424A3B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D908EC0A18A914EB00424A3B /* UIKit.framework */; };
@@ -577,6 +578,8 @@
 		CBA87E8918ABB3DE00B272A8 /* typingSomeone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "typingSomeone@2x.png"; sourceTree = "<group>"; };
 		CBA87E9A18ACFD7B00B272A8 /* NSString+hash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+hash.h"; sourceTree = "<group>"; };
 		CBA87E9B18ACFD7B00B272A8 /* NSString+hash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+hash.m"; sourceTree = "<group>"; };
+		CBB39A7A18DC59AE002E486D /* ChangePasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePasswordViewController.h; sourceTree = "<group>"; };
+		CBB39A7B18DC59AE002E486D /* ChangePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordViewController.m; sourceTree = "<group>"; };
 		D908EC0318A914EB00424A3B /* JoinUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JoinUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D908EC0618A914EB00424A3B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D908EC0818A914EB00424A3B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -641,6 +644,8 @@
 				CBA60FD118D711D1002BF08B /* StatusTableViewCell.m */,
 				CBA60FD618D74747002BF08B /* ProfileViewer.h */,
 				CBA60FD718D74747002BF08B /* ProfileViewer.m */,
+				CBB39A7A18DC59AE002E486D /* ChangePasswordViewController.h */,
+				CBB39A7B18DC59AE002E486D /* ChangePasswordViewController.m */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -1486,9 +1491,9 @@
 		CB90DFC418AB988F0010B58D /* Chat */ = {
 			isa = PBXGroup;
 			children = (
+				CBA87E7F18ABB3DE00B272A8 /* images */,
 				CB050E8D18C9C5C9007AC62B /* ManagerMessages.h */,
 				CB050E8E18C9C5C9007AC62B /* ManagerMessages.m */,
-				CBA87E7F18ABB3DE00B272A8 /* images */,
 				CB90DFC518AB9A150010B58D /* NSBubbleData.h */,
 				CB90DFC618AB9A150010B58D /* NSBubbleData.m */,
 				CB90DFC718AB9A150010B58D /* UIBubbleHeaderTableViewCell.h */,
@@ -1704,7 +1709,7 @@
 		D908EBFB18A914EB00424A3B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Bros Universe";
 				TargetAttributes = {
 					D908EC0218A914EB00424A3B = {
@@ -1815,6 +1820,7 @@
 				CB90DF8D18AA1A540010B58D /* XMPPMessageArchivingCoreDataStorage.m in Sources */,
 				CB90DF6418AA1A540010B58D /* XMPPRoomOccupantHybridMemoryStorageObject.m in Sources */,
 				CB90DFA218AA1A540010B58D /* RFImageToDataTransformer.m in Sources */,
+				CBB39A7C18DC59AE002E486D /* ChangePasswordViewController.m in Sources */,
 				CB90DFC018AA1D230010B58D /* XMPPWrapper.m in Sources */,
 				CB90DF7B18AA1A540010B58D /* XMPPPubSub.m in Sources */,
 				CB90DF8E18AA1A540010B58D /* XMPPMessageArchiving.m in Sources */,
@@ -2002,7 +2008,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -2044,7 +2049,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -2121,7 +2125,6 @@
 		D908EC3C18A914EB00424A3B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/JoinUp.app/JoinUp";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -2144,7 +2147,6 @@
 		D908EC3D18A914EB00424A3B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/JoinUp.app/JoinUp";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",

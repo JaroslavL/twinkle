@@ -11,8 +11,9 @@
 #import "UINearUsersTableView.h"
 #import "ChatViewController.h"
 #import "ProfileViewer.h"
+#import "PhotoViewController.h"
 
-@interface RadarViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UISplitViewControllerDelegate>
+@interface RadarViewController : UIViewController
 {
     NSMutableArray* buttonArray;
     NSMutableDictionary* drawCoord;

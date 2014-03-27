@@ -72,6 +72,8 @@
             
             [managerMessage deserialize];
             
+            [RadarLocation sharedInstance];
+            
             [self performSegueWithIdentifier:@"TabBarController" sender:self];
             
         } else {

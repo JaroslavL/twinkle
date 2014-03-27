@@ -54,6 +54,7 @@ static RadarLocation* _sharedInstance;
 - (void) locationManager:(CLLocationManager *)manager
     didUpdateToLocation:(CLLocation *)newLocation
            fromLocation:(CLLocation *)oldLocation {
+    
     //NSLog(@"Location updated to = %@",newLocation);
     
     [NetworkConnection sendCoordinate:[newLocation coordinate]]; 

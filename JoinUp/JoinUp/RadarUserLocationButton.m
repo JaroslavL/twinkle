@@ -26,10 +26,9 @@
     self = [super init];
     if (self) {
         
-        self.backgroundColor = [UIColor blueColor];
+         [self setImage:[UIImage imageNamed:@"boys.png"] forState:UIControlStateNormal];
         _user = user;
         coordinate = [[RadarLocation sharedInstance] getCoordinatesOnRadar:user];
-        self.layer.cornerRadius = 2.0f;
 
     }
     return self;

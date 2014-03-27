@@ -197,6 +197,11 @@
 		CBA87E9218ABB3DE00B272A8 /* typingSomeone.png in Resources */ = {isa = PBXBuildFile; fileRef = CBA87E8818ABB3DE00B272A8 /* typingSomeone.png */; };
 		CBA87E9318ABB3DE00B272A8 /* typingSomeone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CBA87E8918ABB3DE00B272A8 /* typingSomeone@2x.png */; };
 		CBA87E9C18ACFD7B00B272A8 /* NSString+hash.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA87E9B18ACFD7B00B272A8 /* NSString+hash.m */; };
+		CBAA29E218E01D3300EF7AF2 /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBAA29E118E01D3300EF7AF2 /* PhotoViewController.m */; };
+		CBAA29E618E1AD7000EF7AF2 /* RadarLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = CBAA29E418E1AD7000EF7AF2 /* RadarLoader.m */; };
+		CBAA29E818E1AEB900EF7AF2 /* iam@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CBAA29E718E1AEB900EF7AF2 /* iam@2x.png */; };
+		CBAA29EA18E1AF2200EF7AF2 /* boys@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CBAA29E918E1AF2200EF7AF2 /* boys@2x.png */; };
+		CBAA29ED18E2C5CE00EF7AF2 /* UIImage+ChangeResolution.m in Sources */ = {isa = PBXBuildFile; fileRef = CBAA29EC18E2C5CE00EF7AF2 /* UIImage+ChangeResolution.m */; };
 		CBB39A7C18DC59AE002E486D /* ChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBB39A7B18DC59AE002E486D /* ChangePasswordViewController.m */; };
 		D908EC0718A914EB00424A3B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D908EC0618A914EB00424A3B /* Foundation.framework */; };
 		D908EC0918A914EB00424A3B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D908EC0818A914EB00424A3B /* CoreGraphics.framework */; };
@@ -578,6 +583,15 @@
 		CBA87E8918ABB3DE00B272A8 /* typingSomeone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "typingSomeone@2x.png"; sourceTree = "<group>"; };
 		CBA87E9A18ACFD7B00B272A8 /* NSString+hash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+hash.h"; sourceTree = "<group>"; };
 		CBA87E9B18ACFD7B00B272A8 /* NSString+hash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+hash.m"; sourceTree = "<group>"; };
+		CBAA29E018E01D3300EF7AF2 /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
+		CBAA29E118E01D3300EF7AF2 /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
+		CBAA29E318E1AD7000EF7AF2 /* RadarLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadarLoader.h; sourceTree = "<group>"; };
+		CBAA29E418E1AD7000EF7AF2 /* RadarLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadarLoader.m; sourceTree = "<group>"; };
+		CBAA29E518E1AD7000EF7AF2 /* RadarLoaderProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadarLoaderProtocol.h; sourceTree = "<group>"; };
+		CBAA29E718E1AEB900EF7AF2 /* iam@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iam@2x.png"; sourceTree = "<group>"; };
+		CBAA29E918E1AF2200EF7AF2 /* boys@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "boys@2x.png"; sourceTree = "<group>"; };
+		CBAA29EB18E2C5CE00EF7AF2 /* UIImage+ChangeResolution.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+ChangeResolution.h"; path = "JoinUp/UIImage+ChangeResolution.h"; sourceTree = "<group>"; };
+		CBAA29EC18E2C5CE00EF7AF2 /* UIImage+ChangeResolution.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+ChangeResolution.m"; path = "JoinUp/UIImage+ChangeResolution.m"; sourceTree = "<group>"; };
 		CBB39A7A18DC59AE002E486D /* ChangePasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePasswordViewController.h; sourceTree = "<group>"; };
 		CBB39A7B18DC59AE002E486D /* ChangePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordViewController.m; sourceTree = "<group>"; };
 		D908EC0318A914EB00424A3B /* JoinUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JoinUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -646,6 +660,8 @@
 				CBA60FD718D74747002BF08B /* ProfileViewer.m */,
 				CBB39A7A18DC59AE002E486D /* ChangePasswordViewController.h */,
 				CBB39A7B18DC59AE002E486D /* ChangePasswordViewController.m */,
+				CBAA29E018E01D3300EF7AF2 /* PhotoViewController.h */,
+				CBAA29E118E01D3300EF7AF2 /* PhotoViewController.m */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -663,6 +679,9 @@
 			isa = PBXGroup;
 			children = (
 				CBA60FE318D9C88F002BF08B /* image */,
+				CBAA29E318E1AD7000EF7AF2 /* RadarLoader.h */,
+				CBAA29E418E1AD7000EF7AF2 /* RadarLoader.m */,
+				CBAA29E518E1AD7000EF7AF2 /* RadarLoaderProtocol.h */,
 				CBA60FDD18D9C68F002BF08B /* RadarLocation.h */,
 				CBA60FDE18D9C68F002BF08B /* RadarLocation.m */,
 				CBA60FDF18D9C68F002BF08B /* RadarUserLocationButton.h */,
@@ -1531,8 +1550,10 @@
 		CBA60FE318D9C88F002BF08B /* image */ = {
 			isa = PBXGroup;
 			children = (
+				CBAA29E718E1AEB900EF7AF2 /* iam@2x.png */,
 				CBA60FE418D9C8D2002BF08B /* background@2x copy.png */,
 				CBA60FE518D9C8D2002BF08B /* 2241.jpg */,
+				CBAA29E918E1AF2200EF7AF2 /* boys@2x.png */,
 			);
 			name = image;
 			sourceTree = "<group>";
@@ -1568,6 +1589,8 @@
 			children = (
 				CBA87E9A18ACFD7B00B272A8 /* NSString+hash.h */,
 				CBA87E9B18ACFD7B00B272A8 /* NSString+hash.m */,
+				CBAA29EB18E2C5CE00EF7AF2 /* UIImage+ChangeResolution.h */,
+				CBAA29EC18E2C5CE00EF7AF2 /* UIImage+ChangeResolution.m */,
 				CB90DFB518AA1BA30010B58D /* XMPPFramework.h */,
 				D908EC0C18A914EB00424A3B /* JoinUp */,
 				D908EC2E18A914EB00424A3B /* JoinUpTests */,
@@ -1755,6 +1778,7 @@
 				CBA5166318D200DC00437FDA /* signin@2x.png in Resources */,
 				CB050E8C18C72AC7007AC62B /* bubbleMine@2x.png in Resources */,
 				CBA87E9018ABB3DE00B272A8 /* typingMine.png in Resources */,
+				CBAA29E818E1AEB900EF7AF2 /* iam@2x.png in Resources */,
 				CBA87E9218ABB3DE00B272A8 /* typingSomeone.png in Resources */,
 				CBA87E9318ABB3DE00B272A8 /* typingSomeone@2x.png in Resources */,
 				CB9B8A1718D34AC3004D68B2 /* email44x44px@2x.png in Resources */,
@@ -1764,6 +1788,7 @@
 				CB050E7E18C614DD007AC62B /* login@2x.png in Resources */,
 				CB90DFB318AA1A540010B58D /* build-libidn.sh in Resources */,
 				CB90DFB718AA1C970010B58D /* Main_iPhone.storyboard in Resources */,
+				CBAA29EA18E1AF2200EF7AF2 /* boys@2x.png in Resources */,
 				CBA87E9118ABB3DE00B272A8 /* typingMine@2x.png in Resources */,
 				CBA60FE718D9C8D2002BF08B /* 2241.jpg in Resources */,
 				CBA87E8C18ABB3DE00B272A8 /* bubbleSomeone.png in Resources */,
@@ -1821,6 +1846,7 @@
 				CB90DF6418AA1A540010B58D /* XMPPRoomOccupantHybridMemoryStorageObject.m in Sources */,
 				CB90DFA218AA1A540010B58D /* RFImageToDataTransformer.m in Sources */,
 				CBB39A7C18DC59AE002E486D /* ChangePasswordViewController.m in Sources */,
+				CBAA29ED18E2C5CE00EF7AF2 /* UIImage+ChangeResolution.m in Sources */,
 				CB90DFC018AA1D230010B58D /* XMPPWrapper.m in Sources */,
 				CB90DF7B18AA1A540010B58D /* XMPPPubSub.m in Sources */,
 				CB90DF8E18AA1A540010B58D /* XMPPMessageArchiving.m in Sources */,
@@ -1905,6 +1931,7 @@
 				CB90DF4918AA1A540010B58D /* XMPPCoreDataStorage.m in Sources */,
 				CB90DF3C18AA1A540010B58D /* XMPPXOAuth2Google.m in Sources */,
 				CB90DF3F18AA1A540010B58D /* NSXMLElement+XMPP.m in Sources */,
+				CBAA29E218E01D3300EF7AF2 /* PhotoViewController.m in Sources */,
 				CB90DF7618AA1A540010B58D /* XMPPvCardTempModule.m in Sources */,
 				CB90DF5018AA1A540010B58D /* XMPPRosterCoreDataStorage.m in Sources */,
 				CBA60FCF18D6E6CA002BF08B /* ProfileTableViewCell.m in Sources */,
@@ -1921,6 +1948,7 @@
 				CB90DF4118AA1A540010B58D /* XMPPIQ.m in Sources */,
 				CB8EC8C318B341CC00C06D28 /* RadarViewController.m in Sources */,
 				CB90DFA318AA1A540010B58D /* XMPPIDTracker.m in Sources */,
+				CBAA29E618E1AD7000EF7AF2 /* RadarLoader.m in Sources */,
 				CB90DFA818AA1A540010B58D /* DDASLLogger.m in Sources */,
 				CB90DF7A18AA1A540010B58D /* XMPPIQ+XEP_0060.m in Sources */,
 				CB90DF3618AA1A540010B58D /* XMPPAnonymousAuthentication.m in Sources */,
@@ -2093,7 +2121,7 @@
 				INFOPLIST_FILE = "JoinUp/JoinUp-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/solid/Documents/JoinUp/JoinUp/Vendor/libidn,
+					"$(SRCROOT)/Vendor/libidn",
 				);
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2114,7 +2142,7 @@
 				INFOPLIST_FILE = "JoinUp/JoinUp-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/solid/Documents/JoinUp/JoinUp/Vendor/libidn,
+					"$(SRCROOT)/Vendor/libidn",
 				);
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";

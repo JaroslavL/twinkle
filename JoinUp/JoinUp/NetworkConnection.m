@@ -27,16 +27,6 @@ NSString *const NS_TEST_SET_PROFILES_URL = @"http://192.168.1.100/profile/change
 
 NSString *const NS_TEST_GET_PROFILE_URL = @"http://192.168.1.100/profile/index.php?login=";
 NSString *const NS_TEST_GET_PROFILES_URL = @"http://192.168.1.100/profile/profiles.php?";
-//TODO: insert url to get profile data
-
-NSString *const KEY_USERS = @"users";
-NSString *const KEY_AVATAR = @"avatar";
-NSString *const KEY_LAST_NAME = @"last_name";
-NSString *const KEY_NAME = @"name";
-NSString *const KEY_STATUS = @"status";
-NSString *const KEY_LOGIN = @"login";
-NSString *const KEY_AGE = @"age";
-NSString *const KEY_EMAIL = @"email";
 
 - (BOOL) registration {
     return YES;
@@ -155,7 +145,7 @@ NSString *const KEY_EMAIL = @"email";
     url = [url stringByAppendingString:[NSString stringWithFormat:@"&latitude=%f",coord.latitude]];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]
-                                                           cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData
+                                                        cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData
                                                        timeoutInterval:10];
     
     
@@ -183,27 +173,9 @@ NSString *const KEY_EMAIL = @"email";
     
     for (NSDictionary* user in near_users) {
         
-        User *u = [[User alloc] init];
-        
-        [u setName:[user objectForKey:KEY_NAME]];
-        [u setLastName:[user objectForKey:KEY_LAST_NAME]];
-        [u setAge:[user objectForKey:KEY_AGE]];
-        [u setEmail:[user objectForKey:KEY_EMAIL]];
-        [u setJabberID:[user objectForKey:KEY_LOGIN]];
-        [u setAvatar:[user objectForKey:KEY_AVATAR]];
-        [u setStatus:[user objectForKey:KEY_STATUS]];
-        [u setCountMessages:0];
-        
-        [u setLongitude:[user objectForKey:@"longitude"]];
-        [u setLatitude:[user objectForKey:@"latitude"]];
-        
-        id path = [user objectForKey:KEY_AVATAR];
-        NSURL *url = [NSURL URLWithString:path];
-        NSData *avatar = [NSData dataWithContentsOfURL:url];
-        
-        [u setImgAvatar:[[UIImage alloc] initWithData:avatar]];
-        
+        User *u = [[User alloc] initWithDictionary:user];
         [nearbyUsers addObject:u];
+        
     }
     
     return nearbyUsers;
@@ -233,29 +205,12 @@ NSString *const KEY_EMAIL = @"email";
     
     NSDictionary *userData = [NSJSONSerialization JSONObjectWithData:responseData
                                                              options: NSJSONReadingMutableContainers
-                                                               error: &error];
-    
-    User *u = [[User alloc] init];
-    
+                                                          error: &error];
+    User *u;
     for (NSDictionary* data in userData) {
         
-        [u setName:[data objectForKey:KEY_NAME]];
-        [u setLastName:[data objectForKey:KEY_LAST_NAME]];
-        [u setAge:[data objectForKey:KEY_AGE]];
-        [u setEmail:[data objectForKey:KEY_EMAIL]];
-        [u setJabberID:[data objectForKey:KEY_LOGIN]];
-        [u setAvatar:[data objectForKey:KEY_AVATAR]];
-        [u setStatus:[data objectForKey:KEY_STATUS]];
-        [u setCountMessages:0];
-        
-        [u setLongitude:[data objectForKey:@"longitude"]];
-        [u setLatitude:[data objectForKey:@"latitude"]];
-        
-        id path = [data objectForKey:KEY_AVATAR];
-        NSURL *url = [NSURL URLWithString:path];
-        NSData *avatar = [NSData dataWithContentsOfURL:url];
-        
-        [u setImgAvatar:[[UIImage alloc] initWithData:avatar]];
+          u = [[User alloc] initWithDictionary:data];
+          [u setCountMessages:0];
         
     }
     
@@ -310,26 +265,8 @@ NSString *const KEY_EMAIL = @"email";
     
     for (NSDictionary* user in users) {
         
-        User *u = [[User alloc] init];
-        
-        [u setName:[user objectForKey:KEY_NAME]];
-        [u setLastName:[user objectForKey:KEY_LAST_NAME]];
-        [u setAge:[user objectForKey:KEY_AGE]];
-        [u setEmail:[user objectForKey:KEY_EMAIL]];
-        [u setJabberID:[user objectForKey:KEY_LOGIN]];
-        [u setAvatar:[user objectForKey:KEY_AVATAR]];
-        [u setStatus:[user objectForKey:KEY_STATUS]];
+        User *u = [[User alloc] initWithDictionary:user];
         [u setCountMessages:[[jids objectAtIndex:i] countMessages]];
-        
-        [u setLongitude:[user objectForKey:@"longitude"]];
-        [u setLatitude:[user objectForKey:@"latitude"]];
-        
-        id path = [user objectForKey:KEY_AVATAR];
-        NSURL *url = [NSURL URLWithString:path];
-        NSData *avatar = [NSData dataWithContentsOfURL:url];
-        
-        [u setImgAvatar:[[UIImage alloc] initWithData:avatar]];
-        
         [profiles addObject:u];
         
         i++;

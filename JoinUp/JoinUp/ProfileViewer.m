@@ -82,9 +82,9 @@
  // Drawing code
  }*/
 
-- (void)drawRect:(CGRect)rect profile: (Profile *)profile
-{
-    // Drawing code
+- (void)showProfile: (Profile *)profile {
+    
+    currentUser = [Profile sharedInstance];
     
     [lblLogin setText:[profile jabberID]];
     
@@ -104,12 +104,9 @@
     [btnStartChatingWith setHidden:YES];
     
     //UIImage *imgStatus = [profile icon];
-    
 }
 
-- (void)drawRect:(CGRect)rect user: (User *)user
-{
-    // Drawing code
+- (void)showUserProfile:(User *)user {
     
     currentUser = user;
     
@@ -125,15 +122,6 @@
     [avatar setImage:[self maskImage:imgAvatar withMask:[UIImage imageNamed:@"maska.png"]]];
     
     //UIImage *imgStatus = [profile icon];
-    
-}
-
-- (void)showProfile: (Profile *)profile {
-    [self drawRect:CGRectMake(0, 65, 320, 73) profile:profile];
-}
-
-- (void)showUserProfile:(User *)user {
-    [self drawRect:CGRectMake(0, 65, 320, 73) user:user];
 }
 
 - (UIImage*) maskImage:(UIImage *)image withMask:(UIImage *)maskImage {
@@ -157,7 +145,7 @@
 }
 
 - (void)showPhoto {
-    [_delegate performSegueWithIdentifier:@"showPhoto" sender:nil];
+    [_delegate performSegueWithIdentifier:@"showPhoto" sender:[currentUser imgAvatar]];
 }
 
 @end

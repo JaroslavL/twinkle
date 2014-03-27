@@ -190,10 +190,10 @@
             </objects>
             <point key="canvasLocation" x="814" y="-1422"/>
         </scene>
-        <!--View Controller-->
+        <!--Photo View Controller-->
         <scene sceneID="yLU-eb-Sh6">
             <objects>
-                <viewController id="evs-rQ-0Ti" sceneMemberID="viewController">
+                <viewController id="evs-rQ-0Ti" customClass="PhotoViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7Hb-dP-xay"/>
                         <viewControllerLayoutGuide type="bottom" id="8EQ-oE-szS"/>
@@ -201,6 +201,28 @@
                     <view key="view" contentMode="scaleToFill" id="XIK-IP-DRj">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nDN-5f-ahd">
+                                <rect key="frame" x="20" y="78" width="120" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Change Photo">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="changePhoto:" destination="evs-rQ-0Ti" eventType="touchUpInside" id="vLA-hM-65L"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ukf-96-Foj">
+                                <rect key="frame" x="209" y="78" width="91" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Take photo">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="takePhoto:" destination="evs-rQ-0Ti" eventType="touchUpInside" id="fcM-ek-Edw"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="BOp-O0-FII"/>
@@ -358,7 +380,7 @@
                                         <connections>
                                             <outlet property="imgCell" destination="9Vx-8p-vw3" id="Fb8-KQ-MgT"/>
                                             <outlet property="textCell" destination="Cjb-ic-a6K" id="keQ-oN-Tn4"/>
-                                            <segue destination="qZy-Cc-eWP" kind="push" identifier="ProfileDetail" trigger="accessoryAction" id="AeL-Lm-zVm"/>
+                                            <segue destination="qZy-Cc-eWP" kind="push" identifier="changePasswd" trigger="accessoryAction" id="AeL-Lm-zVm"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -671,8 +693,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="2241.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="HBz-Gf-2F9">
-                                <rect key="frame" x="160" y="300" width="10" height="10"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="iam.png" translatesAutoresizingMaskIntoConstraints="NO" id="HBz-Gf-2F9">
+                                <rect key="frame" x="151" y="275" width="18" height="17"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                         </subviews>
@@ -681,10 +703,11 @@
                     <tabBarItem key="tabBarItem" title="Radar" image="radar.png" id="fbY-bM-u7V"/>
                     <navigationItem key="navigationItem" title="Radar" id="XL5-IN-JPj"/>
                     <connections>
+                        <outlet property="centralPoint" destination="HBz-Gf-2F9" id="kHl-yL-C8b"/>
                         <outlet property="latitideLabal" destination="wMO-cc-lY6" id="Uso-cB-4vY"/>
                         <outlet property="longitude" destination="JbQ-NB-SVr" id="gTP-Gs-VLl"/>
-                        <outlet property="myPointImage" destination="HBz-Gf-2F9" id="liO-9z-10k"/>
                         <segue destination="eUb-dz-240" kind="push" identifier="showChat" id="JzU-Wq-RdC"/>
+                        <segue destination="evs-rQ-0Ti" kind="push" identifier="showPhoto" id="miA-9S-uPU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Otp-Qr-UGB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -693,10 +716,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="2241.jpg" width="500" height="500"/>
         <image name="background@2x copy.png" width="640" height="960"/>
         <image name="button_login.png" width="240" height="42"/>
         <image name="chat.png" width="30" height="30"/>
+        <image name="iam.png" width="22" height="22"/>
         <image name="login.png" width="240" height="42"/>
         <image name="passwd.png" width="240" height="42"/>
         <image name="passwd44x44px.png" width="22" height="22"/>
@@ -712,5 +735,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="JzU-Wq-RdC"/>
+        <segue reference="zQC-Bl-blC"/>
     </inferredMetricsTieBreakers>
 </document>

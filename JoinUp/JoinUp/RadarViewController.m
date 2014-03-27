@@ -9,11 +9,16 @@
 #import "RadarViewController.h"
 #import "RadarLocation.h"
 #import "RadarUserLocationButton.h"
-
-#define CENTRAL_POSITION_X 160
-#define CENTRAL_POSITION_Y 300
+#import "RadarLoader.h"
 
 @interface RadarViewController ()
+@property (weak, nonatomic) IBOutlet UIImageView *circle4;
+@property (weak, nonatomic) IBOutlet UIImageView *circle3;
+@property (weak, nonatomic) IBOutlet UIImageView *circle2;
+@property (weak, nonatomic) IBOutlet UIImageView *cirlce1;
+@property (weak, nonatomic) IBOutlet UIImageView *centralPoint;
+
+@property (strong, nonatomic) NSTimer *timer;
 
 @end
 
@@ -33,91 +38,60 @@
     return self;
 }
 
+#pragma mark - Life cycle
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    
 	// Do any additional setup after loading the view.
+    
     buttonArray = [NSMutableArray new];
+    
+    //  Provile View Settings
     profileViewer = [[ProfileViewer alloc]init];
     profileViewer.delegate = self;
     [self.view addSubview:profileViewer];
-    [NSTimer scheduledTimerWithTimeInterval:5.0f
-                                     target:self
-                                   selector:@selector(updateRadar)
-                                   userInfo:nil
-                                    repeats:YES];
-    
     profileViewer.hidden =YES;
     
-    //TODO: get near users every time
     
-    [self drawRadarPoints];
-    
-    [_tableNearUsers setDelegate:self];
-    [_tableNearUsers setDataSource:self];
+    [self loadUserAndDrawPointsInBackground];
     
 }
 
-- (void)didReceiveMemoryWarning
+- (void)viewWillAppear:(BOOL)animated
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return [nearbyUsers count];
-}
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    //UIUserCellTableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
-    //[[NSNotificationCenter defaultCenter] postNotificationName:@"NewCurrent" object:selectedCell.userLogin];
-    //self.chatViewController.isCurrentInterlocutor = selectedCell.userLogin;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-	UIUserCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UserCell"];
-	User *user = [self.nearbyUsers objectAtIndex:indexPath.row];
-    [cell setUserLogin:[user jabberID]];
-    [[cell userNameLabel] setText:[user name]];
-    //cell.userAvatarImageView.image = [user imgAvatar];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:5.0f
+                                                  target:self
+                                                selector:@selector(loadUserAndDrawPointsInBackground)
+                                                userInfo:nil
+                                                 repeats:YES];
     
-    return cell;
+    //    [self runSpinAnimationOnView:self.cirlce1 duration:14 rotations:10 repeat:10];
+    //    [self runSpinAnimationOnView:self.circle2 duration:31 rotations:10 repeat:10];
+    //    [self runSpinAnimationOnView:self.circle3 duration:36 rotations:10 repeat:10];
+    //    [self runSpinAnimationOnView:self.circle4 duration:43 rotations:10 repeat:10];
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (void)viewWillDisappear:(BOOL)animated
 {
-    if ([[segue identifier] isEqualToString:@"showChat"]) {
-        
-        /// NSIndexPath *indexPath = [self.tableNearUsers indexPathForSelectedRow];
-        NSDate *object = sender;
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"NewActiveChat" object:object];
-        [[segue destinationViewController] setIsCurrentInterlocutor:sender];
-    }
+    [self.timer invalidate];
 }
 
-- (void) drawRadarPoints
+#pragma mark - load and draw users
+
+- (void)  loadUserAndDrawPointsInBackground// draw switch on mainThread
 {
-    /*
-     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT,
-     (unsigned long)NULL), ^(void) {
-     nearbyUsers = [NetworkConnection getNearbyUsers];
-     [self createButtonArrayWithUsers:nearbyUsers];
-     });*/
+    [self performSelectorInBackground:@selector(loadUsers) withObject:nil];
+}
+
+- (void) loadUsers
+{
+    NSLog( @"START LOADING USERS around ME" );
     nearbyUsers = [NetworkConnection getNearbyUsers];
-    [self createButtonArrayWithUsers:nearbyUsers];
-    [self displayButtonArray];
+    NSLog(@"%lu users around me",(unsigned long)[nearbyUsers count]);
+    [self updateRadar];
 }
 
 - (void) updateRadar
@@ -126,21 +100,30 @@
     self.latitideLabal.text = [NSString stringWithFormat:@"%f",coord.latitude];
     self.longitude.text = [NSString stringWithFormat:@"%f",coord.longitude];
     
+    
     for (UIButton *btn in buttonArray)
     {
         [btn removeFromSuperview];
     }
     [buttonArray removeAllObjects];
-    [self.view setNeedsDisplay];
+    
     
     [self drawRadarPoints];
 }
 
+- (void) drawRadarPoints
+{
+    [self createButtonArrayWithUsers:nearbyUsers];
+    [self performSelectorOnMainThread:@selector(displayButtonArray)  withObject:nil waitUntilDone:YES];
+}
+
+
+
 - (void) createButtonArrayWithUsers:(NSArray *) users
 {
-    for (User *user in users)
+    for (User *userInUsers in users)
     {
-        RadarUserLocationButton *newButton = [[RadarUserLocationButton alloc]initWithUser:user];
+        RadarUserLocationButton *newButton = [[RadarUserLocationButton alloc]initWithUser:userInUsers];
         [newButton addTarget:self
                       action:@selector(tapRadarUserLocationButton:)
             forControlEvents:UIControlEventTouchUpInside];
@@ -152,14 +135,76 @@
 {
     for (RadarUserLocationButton *btn in buttonArray)
     {
-        btn.frame = CGRectMake(CENTRAL_POSITION_X+btn.coordinate.x, CENTRAL_POSITION_Y+btn.coordinate.y, 10, 10);
+        btn.frame = CGRectMake(self.centralPoint.center.x+btn.coordinate.x, self.centralPoint.center.y+btn.coordinate.y, 22, 22);
+        
         [self.view addSubview:btn];
     }
     
 }
 
+#pragma mark - User's interaction
+
 - (void) tapRadarUserLocationButton:(RadarUserLocationButton*) sender
 {
+    
+    //    [UIView beginAnimations:@"ScaleButton" context:NULL];
+    //    [UIView setAnimationDuration: 0.5f];
+    //    sender.transform = CGAffineTransformMakeScale(5.0,5.0);
+    //
+    //    [UIView commitAnimations];
+    //
+    
+    //    CABasicAnimation *anim = [CABasicAnimation animationWithKeyPath:@"scale"];
+    //    anim.duration = 5.0f;
+    //    anim.fromValue = [NSValue valueWithCGAffineTransform:CGAffineTransformMakeScale(1.0f, 1.0f)];
+    //    anim.toValue = [NSValue valueWithCGAffineTransform:CGAffineTransformMakeScale(5.0f, 5.0f)];
+    //    anim.byValue  = [NSValue valueWithCGAffineTransform:sender.transform];
+    //    //    anim.toValue = (id)[UIColor redColor].CGColor;
+    //    //    anim.fromValue =  (id)[UIColor blackColor].CGColor;
+    //
+    //    //anim.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    //    anim.repeatCount = 1;
+    //    anim.autoreverses = YES;
+    
+    //   [sender.layer addAnimation:anim forKey:nil];
+    //
+//    CABasicAnimation *anim = [CABasicAnimation animationWithKeyPath:@"bounds"];
+//    anim.duration = 1.f;
+//    anim.fromValue = [NSValue valueWithCGRect:CGRectMake(0,0,10,10)];
+//    anim.toValue = [NSValue valueWithCGRect:CGRectMake(10,10,200,200)];
+//    anim.byValue  = [NSValue valueWithCGRect:sender.bounds];
+//    //    anim.toValue = (id)[UIColor redColor].CGColor;
+//    //    anim.fromValue =  (id)[UIColor blackColor].CGColor;
+//    
+//    anim.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+//    anim.repeatCount = 1;
+//    anim.autoreverses = YES;
+//    
+//    [sender.layer addAnimation:anim forKey:nil];
+//    
+    //    CABasicAnimation *theAnimation;
+    //
+    //    theAnimation=[CABasicAnimation animationWithKeyPath:@"opacity"];
+    //    theAnimation.duration=1.0;
+    //    theAnimation.repeatCount=HUGE_VALF;
+    //    theAnimation.autoreverses=YES;
+    //    theAnimation.fromValue=[NSNumber numberWithFloat:1.0];
+    //    theAnimation.toValue=[NSNumber numberWithFloat:0.0];
+    //    [self.view.layer addAnimation:theAnimation forKey:@"animateOpacity"]; //myButton.layer instead of
+    
+//    CATransition *animation=[CATransition animation];
+//    [animation setDelegate:self];
+//    [animation setDuration:1.0];
+//    [animation setTimingFunction:UIViewAnimationCurveEaseInOut];
+//    [animation setType:@"rippleEffect"];
+//    
+//    [animation setFillMode:kCAFillRuleNonZero];
+//    animation.endProgress=0.99;
+//    [animation setRemovedOnCompletion:NO];
+//    
+//    [self.view.layer addAnimation:animation forKey:nil];
+//    
+    
     [profileViewer showUserProfile:[sender getUser]];
     profileViewer.hidden = NO;
 }
@@ -168,8 +213,40 @@
 {
     UITouch *touch = [[event allTouches] anyObject];
     CGPoint location = [touch locationInView:touch.view];
-    if (location.y < 73 ) return;
+    if (location.y < profileViewer.frame.origin.y + profileViewer.frame.size.height ) return;
     [profileViewer setHidden:YES];
+}
+
+#pragma mark - Animation
+
+
+- (void) runSpinAnimationOnView:(UIView*)view duration:(CGFloat)duration rotations:(CGFloat)rotations repeat:(float)repeat;
+{
+    CABasicAnimation* rotationAnimation;
+    rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+    rotationAnimation.toValue = [NSNumber numberWithFloat: M_PI * 1.0 /* full rotation*/ * rotations * duration ];
+    rotationAnimation.duration = duration;
+    rotationAnimation.cumulative = YES;
+    rotationAnimation.repeatCount = repeat;
+    rotationAnimation.speed = 0.1;
+    
+    [view.layer addAnimation:rotationAnimation forKey:@"rotationAnimation"];
+}
+
+
+#pragma mark - Segue
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"showChat"]) {
+        NSDate *object = sender;
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"NewActiveChat" object:object];
+        [[segue destinationViewController] setIsCurrentInterlocutor:sender];
+    }
+    
+    if ([[segue identifier] isEqualToString:@"showPhoto"]) {
+        [[segue destinationViewController] showPhoto:sender];
+    }
 }
 
 @end

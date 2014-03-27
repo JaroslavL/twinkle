@@ -23,6 +23,16 @@
 @synthesize latitude;
 @synthesize longitude;
 
+
+NSString *const KEY_USERS = @"users";
+NSString *const KEY_AVATAR = @"avatar";
+NSString *const KEY_LAST_NAME = @"last_name";
+NSString *const KEY_NAME = @"name";
+NSString *const KEY_STATUS = @"status";
+NSString *const KEY_LOGIN = @"login";
+NSString *const KEY_AGE = @"age";
+NSString *const KEY_EMAIL = @"email";
+
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super init];
     if (self)
@@ -68,6 +78,30 @@
     
     return self;
     
+}
+
+- (User *) initWithDictionary: (NSDictionary *)dictionary {
+    
+    User *u = [[User alloc] init];
+    
+    [u setName:[dictionary objectForKey:KEY_NAME]];
+    [u setLastName:[dictionary objectForKey:KEY_LAST_NAME]];
+    [u setAge:[dictionary objectForKey:KEY_AGE]];
+    [u setEmail:[dictionary objectForKey:KEY_EMAIL]];
+    [u setJabberID:[dictionary objectForKey:KEY_LOGIN]];
+    [u setAvatar:[dictionary objectForKey:KEY_AVATAR]];
+    [u setStatus:[dictionary objectForKey:KEY_STATUS]];
+    
+    [u setLongitude:[dictionary objectForKey:@"longitude"]];
+    [u setLatitude:[dictionary objectForKey:@"latitude"]];
+    
+    id path = [dictionary objectForKey:KEY_AVATAR];
+    NSURL *url = [NSURL URLWithString:path];
+    NSData *avatarPhoto = [NSData dataWithContentsOfURL:url];
+    
+    [u setImgAvatar:[[UIImage alloc] initWithData:avatarPhoto]];
+    
+    return u;
 }
 
 

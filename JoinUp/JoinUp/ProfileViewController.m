@@ -52,6 +52,18 @@
     
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    /*_profileViewer.avatar = nil;
+    if (![_profileViewer avatar]) {
+        NSLog(@"nil");
+    }
+    _profileViewer = nil;*/
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -185,12 +197,8 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([[segue identifier] isEqualToString:@"ProfileDetail"]) {
-        /*NSIndexPath *indexPath = [self.tableNearUsers indexPathForSelectedRow];
-        NSDate *object = nearbyUsers[indexPath.row];
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"NewActiveChat" object:object];
-        [[segue destinationViewController] setIsCurrentInterlocutor:object];*/
-        [segue destinationViewController];
+    if ([[segue identifier] isEqualToString:@"showPhoto"]) {
+        [[segue destinationViewController] showPhoto:sender];
     }
 }
 
@@ -490,32 +498,6 @@
         }
         
     }
-    
-    /*
-     * check password
-     */
-    
-    /*if (!(5 <= [passwd length] <= 25)) {
-        UIAlertView *alertView = [[UIAlertView alloc]
-                                  initWithTitle:@"Registration"
-                                  message:[NSString stringWithFormat:@"Password length mast be from 5 to 25"]
-                                  delegate:nil
-                                  cancelButtonTitle:@"Ok"
-                                  otherButtonTitles:nil];
-        [alertView show];
-        return NO;
-    }
-    
-    if (![passwd isEqualToString:confpasswd]) {
-        UIAlertView *alertView = [[UIAlertView alloc]
-                                  initWithTitle:@"Registration"
-                                  message:[NSString stringWithFormat:@"Passwords not matched"]
-                                  delegate:nil
-                                  cancelButtonTitle:@"Ok"
-                                  otherButtonTitles:nil];
-        [alertView show];
-        return NO;
-    } */
     
     return YES;
 }

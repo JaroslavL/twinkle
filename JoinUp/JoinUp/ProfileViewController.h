@@ -12,6 +12,7 @@
 #import "StatusTableViewCell.h"
 #import "ProfileViewer.h"
 #import "NetworkConnection.h"
+#import "PhotoViewController.h"
 
 @interface ProfileViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UISplitViewControllerDelegate, UITextFieldDelegate> {
     Profile *profile;

@@ -49,6 +49,23 @@
 
 - (BOOL)isPasswdsMatch {
     
+    /*
+     * check password
+     */
+    
+    if (!(5 <= [[_txtNewPasswd text] length] && [[_txtNewPasswd text] length] <= 25)) {
+        
+        UIAlertView *alertView = [[UIAlertView alloc]
+                                  initWithTitle:@"Change Password"
+                                  message:[NSString stringWithFormat:@"Password length mast be from 5 to 25"]
+                                  delegate:nil
+                                  cancelButtonTitle:@"Ok"
+                                  otherButtonTitles:nil];
+        [alertView show];
+        
+        return NO;
+     }
+    
     return [[_txtNewPasswd text] isEqualToString:[_txtNewPasswdAgain text]];
 }
 
@@ -66,6 +83,8 @@
                                       cancelButtonTitle:@"Ok"
                                       otherButtonTitles:nil];
             [alertView show];
+            
+            [[Profile sharedInstance] setPasswd:[[_txtNewPasswd text] md5_hex]];
             
         } else {
             

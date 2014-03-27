@@ -29,6 +29,8 @@
 
 @property int countMessages;
 
-- (id) initWithUserData: (User *)user;
+- (User *) initWithUserData: (User *)user;
+- (User *) initWithDictionary: (NSDictionary *)dictionary;
+
 
 @end

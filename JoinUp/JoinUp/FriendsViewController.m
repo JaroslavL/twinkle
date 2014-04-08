@@ -58,6 +58,7 @@
 #warning Potentially incomplete method implementation.
     // Return the number of sections.
     return [[[self fetchedResultController] sections] count];
+    ////
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

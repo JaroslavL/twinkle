@@ -17,6 +17,7 @@ NSString *const NS_ARG_LATITUDE = @"latitude=";
 NSString *const NS_ARG_PHONEID = @"tel_id=";
 //1//2//1///5//
 //2
+//привет работй лучше
 NSString *const NS_KEY_ID = @"id";
 NSString *const NS_KEY_USERS = @"users";
 

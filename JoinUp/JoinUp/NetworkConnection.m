@@ -27,13 +27,38 @@ NSString *const NS_TEST_SET_PROFILES_URL = @"http://192.168.1.100/profile/change
 
 NSString *const NS_TEST_GET_PROFILE_URL = @"http://192.168.1.100/profile/index.php?login=";
 NSString *const NS_TEST_GET_PROFILES_URL = @"http://192.168.1.100/profile/profiles.php?";
+NSString *const NS_TEST_SET_OFFLINE_STATUS = @"http://192.168.1.100/logout/index.php?";
 
-- (BOOL) registration {
-    return YES;
-}
-
-- (BOOL) login {
-    return YES;
++ (BOOL) sendOfflineStatus {
+    
+    NSMutableData *receiveData = [[NSMutableData alloc] init];
+    
+    NSString *urlstr = NS_TEST_SET_OFFLINE_STATUS;
+    
+    urlstr = [urlstr stringByAppendingString:[NSString stringWithFormat:@"login=%@&password=%@",
+                                              [[Profile sharedInstance] jabberID],
+                                              [[Profile sharedInstance] passwd]]];
+    
+    NSURL *url = [NSURL URLWithString:[urlstr stringByAddingPercentEscapesUsingEncoding:
+                                       NSUTF8StringEncoding]];
+    
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    
+    NSURLResponse *response = [[NSURLResponse alloc] init];
+    
+    [receiveData appendData:[NSURLConnection sendSynchronousRequest:request
+                                                  returningResponse:&response error:nil]];
+    
+    NSString *answer = [[NSString alloc] initWithData:receiveData
+                                             encoding:NSUTF8StringEncoding];
+    
+    
+    if ([answer isEqualToString:@"20"]) {
+        return YES;
+    } else {
+        return NO;
+    }
 }
 
 + (NSString *) setProfile: (NSString *)status name: (NSString *)name lastname: (NSString *)lastname age: (NSString *)age email: (NSString *)email {

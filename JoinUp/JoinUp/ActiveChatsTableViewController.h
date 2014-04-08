@@ -14,7 +14,7 @@
 @interface ActiveChatsTableViewController : UITableViewController <UISplitViewControllerDelegate>
 
 @property (nonatomic, strong) NSMutableArray *activeChats;
-@property (nonatomic, retain) ChatViewController *chatViewController;
+//@property (nonatomic, retain) ChatViewController *chatViewController;
 @property (readwrite, nonatomic) ManagerMessages *managerMessages;
 
 - (void)addActiveChat:(NSNotification *)notification;

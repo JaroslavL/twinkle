@@ -7,6 +7,7 @@
 //
 
 #import "ProfileViewer.h"
+#import "XMPPWrapper.h"
 
 
 @implementation ProfileViewer
@@ -61,6 +62,8 @@
         [self addSubview:avatar];
         [self addSubview:btnStartChatingWith];
         
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeAvatarNotification) name:@"changeAvatar" object:nil];
+        
     }
     return self;
 }
@@ -101,6 +104,9 @@
     UIImage * imgAvatar = [profile imgAvatar];
     [avatar setImage:[self maskImage:imgAvatar withMask:[UIImage imageNamed:@"maska.png"]]];
     
+    /*XMPPvCardTemp *xmppvCardTemp = [[[XMPPWrapper sharedInstance] xmppvCardTempModule] myvCardTemp];
+    [avatar setImage:[[UIImage alloc] initWithData:[xmppvCardTemp photo]]];*/
+    
     [btnStartChatingWith setHidden:YES];
     
     //UIImage *imgStatus = [profile icon];
@@ -140,12 +146,20 @@
     
 }
 
-- (void)startChatingWith {
+- (void)changeAvatarNotification {
+    [avatar setImage:[self maskImage:[[Profile sharedInstance] imgAvatar] withMask:[UIImage imageNamed:@"maska.png"]]];
+}
+
+- (void)startChatingWith{
     [_delegate performSegueWithIdentifier:@"showChat" sender:currentUser];
 }
 
 - (void)showPhoto {
     [_delegate performSegueWithIdentifier:@"showPhoto" sender:[currentUser imgAvatar]];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

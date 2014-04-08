@@ -87,6 +87,15 @@
     
     ManagerMessages *mm = [ManagerMessages sharedInstance];
     [mm serialize];
+    
+    [[XMPPWrapper sharedInstance] disconnect];
 }
+
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
+{
+    
+}
+
+
 
 @end

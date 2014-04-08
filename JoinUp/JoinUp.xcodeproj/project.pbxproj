@@ -16,11 +16,8 @@
 		CB8EC8BA18B24E2F00C06D28 /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8EC8B918B24E2F00C06D28 /* TabBarController.m */; };
 		CB8EC8BD18B340D300C06D28 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8EC8BC18B340D300C06D28 /* ProfileViewController.m */; };
 		CB8EC8C018B340F400C06D28 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8EC8BF18B340F400C06D28 /* SettingsViewController.m */; };
-		CB8EC8C318B341CC00C06D28 /* RadarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8EC8C218B341CC00C06D28 /* RadarViewController.m */; };
 		CB8EC8FB18B727B900C06D28 /* NetworkConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8EC8F418B727B900C06D28 /* NetworkConnection.m */; };
-		CB8EC8FD18B727B900C06D28 /* UIUserCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8EC8F818B727B900C06D28 /* UIUserCellTableViewCell.m */; };
 		CB8EC8FE18B727B900C06D28 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8EC8FA18B727B900C06D28 /* User.m */; };
-		CB8EC90118B72F7200C06D28 /* UINearUsersTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8EC90018B72F7200C06D28 /* UINearUsersTableView.m */; };
 		CB8EC90D18B746F100C06D28 /* Profile.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8EC90C18B746F100C06D28 /* Profile.m */; };
 		CB8EC96F18B7B5CC00C06D28 /* chat@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CB8EC96B18B7B5CC00C06D28 /* chat@2x.png */; };
 		CB8EC97018B7B5CC00C06D28 /* profile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CB8EC96C18B7B5CC00C06D28 /* profile@2x.png */; };
@@ -169,6 +166,14 @@
 		CB90DFD218AB9A150010B58D /* UIBubbleTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB90DFCA18AB9A150010B58D /* UIBubbleTableView.m */; };
 		CB90DFD318AB9A150010B58D /* UIBubbleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB90DFCC18AB9A150010B58D /* UIBubbleTableViewCell.m */; };
 		CB90DFD418AB9A150010B58D /* UIBubbleTypingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB90DFCF18AB9A150010B58D /* UIBubbleTypingTableViewCell.m */; };
+		CB9728B218EEF5C80012C624 /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9728B118EEF5C80012C624 /* FriendsViewController.m */; };
+		CB975F4C18F2971000FBC376 /* SCWaveAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB975F4918F2971000FBC376 /* SCWaveAnimationView.m */; };
+		CB975F4D18F2971000FBC376 /* Globals.m in Sources */ = {isa = PBXBuildFile; fileRef = CB975F4B18F2971000FBC376 /* Globals.m */; };
+		CB975F5018F2971C00FBC376 /* JURadarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CB975F4F18F2971C00FBC376 /* JURadarButton.m */; };
+		CB975F5418F2973600FBC376 /* JURadar.m in Sources */ = {isa = PBXBuildFile; fileRef = CB975F5318F2973600FBC376 /* JURadar.m */; };
+		CB975F5718F2979200FBC376 /* RadarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB975F5618F2979200FBC376 /* RadarViewController.m */; };
+		CB975F5A18F297C000FBC376 /* JURadarProfileView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB975F5918F297C000FBC376 /* JURadarProfileView.m */; };
+		CB975F5D18F299DD00FBC376 /* UIUserCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB975F5C18F299DD00FBC376 /* UIUserCellTableViewCell.m */; };
 		CB9B8A1718D34AC3004D68B2 /* email44x44px@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CB9B8A1218D34AC3004D68B2 /* email44x44px@2x.png */; };
 		CB9B8A1818D34AC3004D68B2 /* fullname44x44px@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CB9B8A1318D34AC3004D68B2 /* fullname44x44px@2x.png */; };
 		CB9B8A1918D34AC3004D68B2 /* heart22x22px@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CB9B8A1418D34AC3004D68B2 /* heart22x22px@2x.png */; };
@@ -185,7 +190,6 @@
 		CBA60FDA18D87D6C002BF08B /* startchat@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CBA60FD918D87D6C002BF08B /* startchat@2x.png */; };
 		CBA60FDC18D8A612002BF08B /* maska@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CBA60FDB18D8A612002BF08B /* maska@2x.png */; };
 		CBA60FE118D9C68F002BF08B /* RadarLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA60FDE18D9C68F002BF08B /* RadarLocation.m */; };
-		CBA60FE218D9C68F002BF08B /* RadarUserLocationButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA60FE018D9C68F002BF08B /* RadarUserLocationButton.m */; };
 		CBA60FE618D9C8D2002BF08B /* background@2x copy.png in Resources */ = {isa = PBXBuildFile; fileRef = CBA60FE418D9C8D2002BF08B /* background@2x copy.png */; };
 		CBA60FE718D9C8D2002BF08B /* 2241.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CBA60FE518D9C8D2002BF08B /* 2241.jpg */; };
 		CBA87E8A18ABB3DE00B272A8 /* bubbleMine.png in Resources */ = {isa = PBXBuildFile; fileRef = CBA87E8018ABB3DE00B272A8 /* bubbleMine.png */; };
@@ -198,10 +202,10 @@
 		CBA87E9318ABB3DE00B272A8 /* typingSomeone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CBA87E8918ABB3DE00B272A8 /* typingSomeone@2x.png */; };
 		CBA87E9C18ACFD7B00B272A8 /* NSString+hash.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA87E9B18ACFD7B00B272A8 /* NSString+hash.m */; };
 		CBAA29E218E01D3300EF7AF2 /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBAA29E118E01D3300EF7AF2 /* PhotoViewController.m */; };
-		CBAA29E618E1AD7000EF7AF2 /* RadarLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = CBAA29E418E1AD7000EF7AF2 /* RadarLoader.m */; };
 		CBAA29E818E1AEB900EF7AF2 /* iam@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CBAA29E718E1AEB900EF7AF2 /* iam@2x.png */; };
 		CBAA29EA18E1AF2200EF7AF2 /* boys@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CBAA29E918E1AF2200EF7AF2 /* boys@2x.png */; };
 		CBAA29ED18E2C5CE00EF7AF2 /* UIImage+ChangeResolution.m in Sources */ = {isa = PBXBuildFile; fileRef = CBAA29EC18E2C5CE00EF7AF2 /* UIImage+ChangeResolution.m */; };
+		CBAA29F818E599C400EF7AF2 /* FriendsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBAA29F718E599C400EF7AF2 /* FriendsTableViewController.m */; };
 		CBB39A7C18DC59AE002E486D /* ChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBB39A7B18DC59AE002E486D /* ChangePasswordViewController.m */; };
 		D908EC0718A914EB00424A3B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D908EC0618A914EB00424A3B /* Foundation.framework */; };
 		D908EC0918A914EB00424A3B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D908EC0818A914EB00424A3B /* CoreGraphics.framework */; };
@@ -242,16 +246,10 @@
 		CB8EC8BC18B340D300C06D28 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		CB8EC8BE18B340F400C06D28 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		CB8EC8BF18B340F400C06D28 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
-		CB8EC8C118B341CC00C06D28 /* RadarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadarViewController.h; sourceTree = "<group>"; };
-		CB8EC8C218B341CC00C06D28 /* RadarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadarViewController.m; sourceTree = "<group>"; };
 		CB8EC8F318B727B900C06D28 /* NetworkConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkConnection.h; sourceTree = "<group>"; };
 		CB8EC8F418B727B900C06D28 /* NetworkConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkConnection.m; sourceTree = "<group>"; };
-		CB8EC8F718B727B900C06D28 /* UIUserCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIUserCellTableViewCell.h; sourceTree = "<group>"; };
-		CB8EC8F818B727B900C06D28 /* UIUserCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIUserCellTableViewCell.m; sourceTree = "<group>"; };
 		CB8EC8F918B727B900C06D28 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		CB8EC8FA18B727B900C06D28 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
-		CB8EC8FF18B72F7200C06D28 /* UINearUsersTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UINearUsersTableView.h; sourceTree = "<group>"; };
-		CB8EC90018B72F7200C06D28 /* UINearUsersTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UINearUsersTableView.m; sourceTree = "<group>"; };
 		CB8EC90B18B746F100C06D28 /* Profile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Profile.h; sourceTree = "<group>"; };
 		CB8EC90C18B746F100C06D28 /* Profile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Profile.m; sourceTree = "<group>"; };
 		CB8EC96B18B7B5CC00C06D28 /* chat@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat@2x.png"; sourceTree = "<group>"; };
@@ -547,6 +545,22 @@
 		CB90DFCD18AB9A150010B58D /* UIBubbleTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBubbleTableViewDataSource.h; sourceTree = "<group>"; };
 		CB90DFCE18AB9A150010B58D /* UIBubbleTypingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBubbleTypingTableViewCell.h; sourceTree = "<group>"; };
 		CB90DFCF18AB9A150010B58D /* UIBubbleTypingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBubbleTypingTableViewCell.m; sourceTree = "<group>"; };
+		CB9728B018EEF5C80012C624 /* FriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsViewController.h; sourceTree = "<group>"; };
+		CB9728B118EEF5C80012C624 /* FriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsViewController.m; sourceTree = "<group>"; };
+		CB975F4818F2971000FBC376 /* SCWaveAnimationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCWaveAnimationView.h; sourceTree = "<group>"; };
+		CB975F4918F2971000FBC376 /* SCWaveAnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCWaveAnimationView.m; sourceTree = "<group>"; };
+		CB975F4A18F2971000FBC376 /* Globals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Globals.h; sourceTree = "<group>"; };
+		CB975F4B18F2971000FBC376 /* Globals.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Globals.m; sourceTree = "<group>"; };
+		CB975F4E18F2971C00FBC376 /* JURadarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JURadarButton.h; sourceTree = "<group>"; };
+		CB975F4F18F2971C00FBC376 /* JURadarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JURadarButton.m; sourceTree = "<group>"; };
+		CB975F5218F2973600FBC376 /* JURadar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JURadar.h; sourceTree = "<group>"; };
+		CB975F5318F2973600FBC376 /* JURadar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JURadar.m; sourceTree = "<group>"; };
+		CB975F5518F2979200FBC376 /* RadarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadarViewController.h; sourceTree = "<group>"; };
+		CB975F5618F2979200FBC376 /* RadarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadarViewController.m; sourceTree = "<group>"; };
+		CB975F5818F297C000FBC376 /* JURadarProfileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JURadarProfileView.h; sourceTree = "<group>"; };
+		CB975F5918F297C000FBC376 /* JURadarProfileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JURadarProfileView.m; sourceTree = "<group>"; };
+		CB975F5B18F299DD00FBC376 /* UIUserCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIUserCellTableViewCell.h; sourceTree = "<group>"; };
+		CB975F5C18F299DD00FBC376 /* UIUserCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIUserCellTableViewCell.m; sourceTree = "<group>"; };
 		CB9B8A1218D34AC3004D68B2 /* email44x44px@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "email44x44px@2x.png"; sourceTree = "<group>"; };
 		CB9B8A1318D34AC3004D68B2 /* fullname44x44px@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fullname44x44px@2x.png"; sourceTree = "<group>"; };
 		CB9B8A1418D34AC3004D68B2 /* heart22x22px@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "heart22x22px@2x.png"; sourceTree = "<group>"; };
@@ -569,8 +583,6 @@
 		CBA60FDB18D8A612002BF08B /* maska@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "maska@2x.png"; sourceTree = "<group>"; };
 		CBA60FDD18D9C68F002BF08B /* RadarLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadarLocation.h; sourceTree = "<group>"; };
 		CBA60FDE18D9C68F002BF08B /* RadarLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadarLocation.m; sourceTree = "<group>"; };
-		CBA60FDF18D9C68F002BF08B /* RadarUserLocationButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadarUserLocationButton.h; sourceTree = "<group>"; };
-		CBA60FE018D9C68F002BF08B /* RadarUserLocationButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadarUserLocationButton.m; sourceTree = "<group>"; };
 		CBA60FE418D9C8D2002BF08B /* background@2x copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background@2x copy.png"; sourceTree = "<group>"; };
 		CBA60FE518D9C8D2002BF08B /* 2241.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2241.jpg; sourceTree = "<group>"; };
 		CBA87E8018ABB3DE00B272A8 /* bubbleMine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubbleMine.png; sourceTree = "<group>"; };
@@ -585,13 +597,12 @@
 		CBA87E9B18ACFD7B00B272A8 /* NSString+hash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+hash.m"; sourceTree = "<group>"; };
 		CBAA29E018E01D3300EF7AF2 /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
 		CBAA29E118E01D3300EF7AF2 /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
-		CBAA29E318E1AD7000EF7AF2 /* RadarLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadarLoader.h; sourceTree = "<group>"; };
-		CBAA29E418E1AD7000EF7AF2 /* RadarLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadarLoader.m; sourceTree = "<group>"; };
-		CBAA29E518E1AD7000EF7AF2 /* RadarLoaderProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadarLoaderProtocol.h; sourceTree = "<group>"; };
 		CBAA29E718E1AEB900EF7AF2 /* iam@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iam@2x.png"; sourceTree = "<group>"; };
 		CBAA29E918E1AF2200EF7AF2 /* boys@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "boys@2x.png"; sourceTree = "<group>"; };
 		CBAA29EB18E2C5CE00EF7AF2 /* UIImage+ChangeResolution.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+ChangeResolution.h"; path = "JoinUp/UIImage+ChangeResolution.h"; sourceTree = "<group>"; };
 		CBAA29EC18E2C5CE00EF7AF2 /* UIImage+ChangeResolution.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+ChangeResolution.m"; path = "JoinUp/UIImage+ChangeResolution.m"; sourceTree = "<group>"; };
+		CBAA29F618E599C400EF7AF2 /* FriendsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsTableViewController.h; sourceTree = "<group>"; };
+		CBAA29F718E599C400EF7AF2 /* FriendsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsTableViewController.m; sourceTree = "<group>"; };
 		CBB39A7A18DC59AE002E486D /* ChangePasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePasswordViewController.h; sourceTree = "<group>"; };
 		CBB39A7B18DC59AE002E486D /* ChangePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordViewController.m; sourceTree = "<group>"; };
 		D908EC0318A914EB00424A3B /* JoinUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JoinUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -678,20 +689,19 @@
 		CB8EC8C618B3421D00C06D28 /* Radar */ = {
 			isa = PBXGroup;
 			children = (
-				CBA60FE318D9C88F002BF08B /* image */,
-				CBAA29E318E1AD7000EF7AF2 /* RadarLoader.h */,
-				CBAA29E418E1AD7000EF7AF2 /* RadarLoader.m */,
-				CBAA29E518E1AD7000EF7AF2 /* RadarLoaderProtocol.h */,
 				CBA60FDD18D9C68F002BF08B /* RadarLocation.h */,
 				CBA60FDE18D9C68F002BF08B /* RadarLocation.m */,
-				CBA60FDF18D9C68F002BF08B /* RadarUserLocationButton.h */,
-				CBA60FE018D9C68F002BF08B /* RadarUserLocationButton.m */,
-				CB8EC8F718B727B900C06D28 /* UIUserCellTableViewCell.h */,
-				CB8EC8F818B727B900C06D28 /* UIUserCellTableViewCell.m */,
-				CB8EC8FF18B72F7200C06D28 /* UINearUsersTableView.h */,
-				CB8EC90018B72F7200C06D28 /* UINearUsersTableView.m */,
-				CB8EC8C118B341CC00C06D28 /* RadarViewController.h */,
-				CB8EC8C218B341CC00C06D28 /* RadarViewController.m */,
+				CB975F5818F297C000FBC376 /* JURadarProfileView.h */,
+				CB975F5918F297C000FBC376 /* JURadarProfileView.m */,
+				CB975F5518F2979200FBC376 /* RadarViewController.h */,
+				CB975F5618F2979200FBC376 /* RadarViewController.m */,
+				CB975F5118F2972A00FBC376 /* Model */,
+				CB975F4E18F2971C00FBC376 /* JURadarButton.h */,
+				CB975F4F18F2971C00FBC376 /* JURadarButton.m */,
+				CB975F4118F296E500FBC376 /* sonar */,
+				CBA60FE318D9C88F002BF08B /* image */,
+				CB975F5B18F299DD00FBC376 /* UIUserCellTableViewCell.h */,
+				CB975F5C18F299DD00FBC376 /* UIUserCellTableViewCell.m */,
 			);
 			name = Radar;
 			sourceTree = "<group>";
@@ -1532,6 +1542,26 @@
 			name = Chat;
 			sourceTree = "<group>";
 		};
+		CB975F4118F296E500FBC376 /* sonar */ = {
+			isa = PBXGroup;
+			children = (
+				CB975F4818F2971000FBC376 /* SCWaveAnimationView.h */,
+				CB975F4918F2971000FBC376 /* SCWaveAnimationView.m */,
+				CB975F4A18F2971000FBC376 /* Globals.h */,
+				CB975F4B18F2971000FBC376 /* Globals.m */,
+			);
+			name = sonar;
+			sourceTree = "<group>";
+		};
+		CB975F5118F2972A00FBC376 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CB975F5218F2973600FBC376 /* JURadar.h */,
+				CB975F5318F2973600FBC376 /* JURadar.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		CB9B8A1118D34A9C004D68B2 /* image */ = {
 			isa = PBXGroup;
 			children = (
@@ -1582,6 +1612,17 @@
 				CB90DFBC18AA1D230010B58D /* RegistrationViewController.m */,
 			);
 			name = Registration;
+			sourceTree = "<group>";
+		};
+		CBAA29F218E596E300EF7AF2 /* Friends */ = {
+			isa = PBXGroup;
+			children = (
+				CBAA29F618E599C400EF7AF2 /* FriendsTableViewController.h */,
+				CBAA29F718E599C400EF7AF2 /* FriendsTableViewController.m */,
+				CB9728B018EEF5C80012C624 /* FriendsViewController.h */,
+				CB9728B118EEF5C80012C624 /* FriendsViewController.m */,
+			);
+			name = Friends;
 			sourceTree = "<group>";
 		};
 		D908EBFA18A914EB00424A3B = {
@@ -1640,6 +1681,7 @@
 				CB8EC8F418B727B900C06D28 /* NetworkConnection.m */,
 				CB8EC8F918B727B900C06D28 /* User.h */,
 				CB8EC8FA18B727B900C06D28 /* User.m */,
+				CBAA29F218E596E300EF7AF2 /* Friends */,
 				CB8EC8C618B3421D00C06D28 /* Radar */,
 				CB8EC8CD18B6036200C06D28 /* TabBarController */,
 				CB8EC8C718B3424400C06D28 /* Login */,
@@ -1736,6 +1778,7 @@
 				ORGANIZATIONNAME = "Bros Universe";
 				TargetAttributes = {
 					D908EC0218A914EB00424A3B = {
+						DevelopmentTeam = N676H8XAT2;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -1828,6 +1871,8 @@
 			files = (
 				CB90DF6B18AA1A540010B58D /* XMPPvCard.xcdatamodeld in Sources */,
 				CB90DF4418AA1A540010B58D /* XMPPModule.m in Sources */,
+				CB975F4D18F2971000FBC376 /* Globals.m in Sources */,
+				CB975F5018F2971C00FBC376 /* JURadarButton.m in Sources */,
 				CB90DF4B18AA1A540010B58D /* XMPPProcessOne.m in Sources */,
 				CB90DF8318AA1A540010B58D /* XMPPTransports.m in Sources */,
 				CB90DF4218AA1A540010B58D /* XMPPJID.m in Sources */,
@@ -1859,7 +1904,6 @@
 				CB90DF8F18AA1A540010B58D /* XMPPvCardAvatarModule.m in Sources */,
 				CB90DF6D18AA1A540010B58D /* XMPPvCardCoreDataStorage.m in Sources */,
 				CB90DFA118AA1A540010B58D /* GCDMulticastDelegate.m in Sources */,
-				CB8EC90118B72F7200C06D28 /* UINearUsersTableView.m in Sources */,
 				CB90DF6718AA1A540010B58D /* XMPPRoomOccupantMemoryStorageObject.m in Sources */,
 				CB90DF8618AA1A540010B58D /* XMPPCapabilitiesCoreDataStorage.m in Sources */,
 				CB90DF7118AA1A540010B58D /* XMPPvCardTempAdr.m in Sources */,
@@ -1873,14 +1917,12 @@
 				CB90DF6118AA1A540010B58D /* XMPPRoomHybrid.xcdatamodeld in Sources */,
 				CB050E8F18C9C5C9007AC62B /* ManagerMessages.m in Sources */,
 				CB90DF5518AA1A540010B58D /* XMPPRoster.m in Sources */,
-				CBA60FE218D9C68F002BF08B /* RadarUserLocationButton.m in Sources */,
 				CB90DF7F18AA1A540010B58D /* NSDate+XMPPDateTimeProfiles.m in Sources */,
 				CB90DF4318AA1A540010B58D /* XMPPMessage.m in Sources */,
 				CB90DFB018AA1A540010B58D /* DDXMLDocument.m in Sources */,
 				CB90DF4018AA1A540010B58D /* XMPPElement.m in Sources */,
 				CB90DF7318AA1A540010B58D /* XMPPvCardTempBase.m in Sources */,
 				CB90DF7D18AA1A540010B58D /* XMPPIQ+XEP_0066.m in Sources */,
-				CB8EC8FD18B727B900C06D28 /* UIUserCellTableViewCell.m in Sources */,
 				CB90DFB218AA1A540010B58D /* DDXMLNode.m in Sources */,
 				CB90DF6818AA1A540010B58D /* XMPPMessage+XEP0045.m in Sources */,
 				CB90DF7C18AA1A540010B58D /* TURNSocket.m in Sources */,
@@ -1903,6 +1945,7 @@
 				CB90DF7718AA1A540010B58D /* XMPPvCardTempTel.m in Sources */,
 				CB90DF8218AA1A540010B58D /* XMPPSoftwareVersion.m in Sources */,
 				CB90DF3918AA1A540010B58D /* XMPPDigestMD5Authentication.m in Sources */,
+				CB975F5D18F299DD00FBC376 /* UIUserCellTableViewCell.m in Sources */,
 				CB90DFAA18AA1A540010B58D /* DDLog.m in Sources */,
 				CB90DF4F18AA1A540010B58D /* XMPPRoster.xcdatamodel in Sources */,
 				CB90DF8718AA1A540010B58D /* XMPPCapsCoreDataStorageObject.m in Sources */,
@@ -1910,11 +1953,13 @@
 				CB90DF4518AA1A540010B58D /* XMPPParser.m in Sources */,
 				CB90DFA018AA1A540010B58D /* DDList.m in Sources */,
 				CB90DF4718AA1A540010B58D /* XMPPStream.m in Sources */,
+				CB975F4C18F2971000FBC376 /* SCWaveAnimationView.m in Sources */,
 				CB8EC8BD18B340D300C06D28 /* ProfileViewController.m in Sources */,
 				CB90DF3A18AA1A540010B58D /* XMPPPlainAuthentication.m in Sources */,
 				CB90DF9A18AA1A540010B58D /* XMPPAttentionModule.m in Sources */,
 				CB90DF5C18AA1A540010B58D /* XMPPPrivacy.m in Sources */,
 				CB90DF8A18AA1A540010B58D /* XMPPMessageArchiving.xcdatamodeld in Sources */,
+				CBAA29F818E599C400EF7AF2 /* FriendsTableViewController.m in Sources */,
 				CB90DFAF18AA1A540010B58D /* NSString+DDXML.m in Sources */,
 				CB90DF6C18AA1A540010B58D /* XMPPvCardAvatarCoreDataStorageObject.m in Sources */,
 				CB90DF5D18AA1A540010B58D /* XMPPRoom.xcdatamodeld in Sources */,
@@ -1925,8 +1970,10 @@
 				CB90DF7218AA1A540010B58D /* XMPPvCardTempAdrTypes.m in Sources */,
 				CB9DB55E18BB4CEB00C2A7E2 /* TDBadgedCell.m in Sources */,
 				CB90DF5E18AA1A540010B58D /* XMPPRoomCoreDataStorage.m in Sources */,
+				CB975F5A18F297C000FBC376 /* JURadarProfileView.m in Sources */,
 				CB90DF8418AA1A540010B58D /* NSString+XEP_0106.m in Sources */,
 				CB90DF6918AA1A540010B58D /* XMPPMUC.m in Sources */,
+				CB9728B218EEF5C80012C624 /* FriendsViewController.m in Sources */,
 				CB90DF9918AA1A540010B58D /* XEP_0223.m in Sources */,
 				CB90DF4918AA1A540010B58D /* XMPPCoreDataStorage.m in Sources */,
 				CB90DF3C18AA1A540010B58D /* XMPPXOAuth2Google.m in Sources */,
@@ -1946,11 +1993,10 @@
 				CB90DF8018AA1A540010B58D /* XMPPDateTimeProfiles.m in Sources */,
 				CB90DF7E18AA1A540010B58D /* XMPPMessage+XEP_0066.m in Sources */,
 				CB90DF4118AA1A540010B58D /* XMPPIQ.m in Sources */,
-				CB8EC8C318B341CC00C06D28 /* RadarViewController.m in Sources */,
 				CB90DFA318AA1A540010B58D /* XMPPIDTracker.m in Sources */,
-				CBAA29E618E1AD7000EF7AF2 /* RadarLoader.m in Sources */,
 				CB90DFA818AA1A540010B58D /* DDASLLogger.m in Sources */,
 				CB90DF7A18AA1A540010B58D /* XMPPIQ+XEP_0060.m in Sources */,
+				CB975F5718F2979200FBC376 /* RadarViewController.m in Sources */,
 				CB90DF3618AA1A540010B58D /* XMPPAnonymousAuthentication.m in Sources */,
 				CB90DF9F18AA1A540010B58D /* NSXMLElement+XEP_0335.m in Sources */,
 				CB90DF7018AA1A540010B58D /* XMPPvCardTemp.m in Sources */,
@@ -1960,6 +2006,7 @@
 				CB90DF8B18AA1A540010B58D /* XMPPMessageArchiving_Contact_CoreDataObject.m in Sources */,
 				CB9DB56118BB52FA00C2A7E2 /* ActiveChatsTableViewController.m in Sources */,
 				CB90DF5118AA1A540010B58D /* XMPPUserCoreDataStorageObject.m in Sources */,
+				CB975F5418F2973600FBC376 /* JURadar.m in Sources */,
 				CB90DF6218AA1A540010B58D /* XMPPRoomHybridStorage.m in Sources */,
 				CBA60FD218D711D1002BF08B /* StatusTableViewCell.m in Sources */,
 				CB90DFA618AA1A540010B58D /* GCDAsyncSocket.m in Sources */,
@@ -2114,6 +2161,8 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JoinUp/JoinUp-Prefix.pch";
@@ -2125,6 +2174,7 @@
 				);
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2135,6 +2185,8 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JoinUp/JoinUp-Prefix.pch";
@@ -2146,6 +2198,7 @@
 				);
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

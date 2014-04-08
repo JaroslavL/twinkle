@@ -11,5 +11,6 @@
 @interface UIImage (ChangeResolution)
 
 - (NSData *) transformation;
+- (NSData *) maskImage: (UIImage *)maskImage;
 
 @end

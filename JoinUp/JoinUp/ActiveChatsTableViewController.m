@@ -14,7 +14,7 @@
 
 @implementation ActiveChatsTableViewController
 
-@synthesize chatViewController;
+//@synthesize chatViewController;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -77,7 +77,7 @@
 {
     static NSString *CellIdentifier = @"UserCell";
     UIUserCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    [[cell userNameLabel] setText:[_activeChats[indexPath.row] name]];
+    [[cell userNameLabel] setText:[_activeChats[indexPath.row] jabberID]];
     [[cell userAvatarImageView] setImage:[_activeChats[indexPath.row] imgAvatar]];
     
     if ([_activeChats[indexPath.row] countMessages]) {

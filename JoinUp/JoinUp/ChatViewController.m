@@ -98,9 +98,15 @@
     //bubbleTable.typingBubble = NSBubbleTypingTypeSomebody;
     
     [bubbleTable reloadData];
-     
-    [[self navigationItem] setTitle:@"Chat"];
-    [[self navigationItem] setPrompt:[@"Chat with " stringByAppendingString:[_isCurrentInterlocutor jabberID]]];
+    
+    [[self navigationItem] setPrompt:[_isCurrentInterlocutor jabberID]];
+    
+    
+    //[[self navigationItem] setTitleView:[[UIImageView alloc] initWithImage:[UIImage imageWithData:[_isCurrentInterlocutor imgAvatar]]]];
+    
+    if ([[[XMPPWrapper sharedInstance] xmppRosterStorage] userExistsWithJID:[XMPPJID jidWithString:[[_isCurrentInterlocutor jabberID] stringByAppendingString:@"@shiva"]] xmppStream:[[XMPPWrapper sharedInstance] xmppStream]]) {
+        [_addToFriends setHidden:YES];
+    }
     
     // Keyboard events
     
@@ -254,6 +260,12 @@
 
 - (IBAction)btnDisconnect:(id)sender {
     [xmppwrapper disconnect];
+}
+
+- (IBAction)addToFriends:(id)sender {
+    [[xmppwrapper xmppRoster] addUser:[XMPPJID jidWithString:[[_isCurrentInterlocutor jabberID] stringByAppendingString:@"@shiva"]] withNickname:nil];
+    
+   //TODO: local notificatin
 }
 
 - (IBAction)btnSendMessage:(id)sender {

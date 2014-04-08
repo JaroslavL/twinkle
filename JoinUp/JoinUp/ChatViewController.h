@@ -27,8 +27,9 @@
 @property (strong, nonatomic) User *isCurrentInterlocutor;
 @property (readwrite, nonatomic) Profile *profile;
 @property (readwrite, nonatomic) ManagerMessages *managerMessages;
+@property (weak, nonatomic) IBOutlet UIButton *addToFriends;
 
-- (IBAction)btnDisconnect:(id)sender;
+- (IBAction)addToFriends:(id)sender;
 - (IBAction)btnSendMessage:(id)sender;
 
 - (void)sendMessage:(NSString *)msgContent;

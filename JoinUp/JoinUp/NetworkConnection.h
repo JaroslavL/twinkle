@@ -24,5 +24,6 @@
 + (NSArray*)         getNearbyUsers;
 
 + (BOOL) sendCoordinate:(CLLocationCoordinate2D) coordinate;
++ (BOOL) sendOfflineStatus;
 
 @end

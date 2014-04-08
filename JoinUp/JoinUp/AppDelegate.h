@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "XMPPWrapper.h"
 #import "ManagerMessages.h"
+#import "Profile.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate> {
     UIBackgroundTaskIdentifier bgTask;

@@ -10,7 +10,10 @@
 #import "User.h"
 #import "RadarLocation.h"
 
-@interface RadarUserLocationButton : UIButton
+#define RADARUSERBUTTON_WIDTH 22
+#define RADARUSERBUTTON_HEIGHT 22
+
+@interface JURadarButton : UIButton
 {
     User* _user;
 }
@@ -18,6 +21,7 @@
 - (id) initWithUser:(User*) user;
 - (User *) getUser;
 
+@property UILabel *juRadarPopUpLabel;
 @property CGPoint coordinate;
 
 @end

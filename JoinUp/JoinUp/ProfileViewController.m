@@ -84,15 +84,15 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //[tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+/*- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (!indexPath.row) {
         return 22;
     } else return 44;
-}
+}*/
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -101,8 +101,7 @@
     
     switch (indexPath.row) {
         case 0:
-            [[cellStatus icon] setHighlighted:YES];
-            [[cellStatus icon] setHighlightedImage:[UIImage imageNamed:@"heart22x22px.png"]];
+            [[cellStatus imageView] setImage:[UIImage imageNamed:@"heart22x22px.png"]];
             
             if ([profile status]) {
                 [[cellStatus textStatus] setText:[profile status]];
@@ -119,8 +118,7 @@
                                                        object:[cellStatus textStatus]];
             return cellStatus;
         case 1:
-            [[cell imgCell] setHighlighted:YES];
-            [[cell imgCell] setHighlightedImage:[UIImage imageNamed:@"fullname44x44px.png"]];
+            [[cell imageView] setImage:[UIImage imageNamed:@"fullname44x44px.png"]];
             [[cell textCell] setText:[profile name]];
             [[cell textCell] setDelegate:self];
             [[cell textCell] setTag:[nameTag intValue]];
@@ -133,8 +131,7 @@
             
             break;
         case 2:
-            [[cell imgCell] setHighlighted:YES];
-            [[cell imgCell] setHighlightedImage:[UIImage imageNamed:@"fullname44x44px.png"]];
+            [[cell imageView] setImage:[UIImage imageNamed:@"fullname44x44px.png"]];
             [[cell textCell] setText:[profile lastName]];
             [[cell textCell] setDelegate:self];
             [[cell textCell] setTag:[lastnameTag intValue]];
@@ -147,9 +144,7 @@
             
             break;
         case 3:
-            [[cell imgCell] setHighlighted:YES];
-            [[cell imgCell] setHighlightedImage:[UIImage imageNamed:@"years-old44x44px.png"]];
-            
+            [[cell imageView] setImage:[UIImage imageNamed:@"years-old44x44px.png"]];
             if (![[profile age] isEqualToString:@"0"]) {
                 [[cell textCell] setText:[profile age]];
             } else {
@@ -167,8 +162,7 @@
             
             break;
         case 4:
-            [[cell imgCell] setHighlighted:YES];
-            [[cell imgCell] setHighlightedImage:[UIImage imageNamed:@"email44x44px.png"]];
+            [[cell imageView] setImage:[UIImage imageNamed:@"email44x44px.png"]];
             [[cell textCell] setText:[profile email]];
             [[cell textCell] setDelegate:self];
             [[cell textCell] setTag:[emailTag intValue]];
@@ -181,8 +175,7 @@
             
             break;
         case 5:
-            [[cell imgCell] setHighlighted:YES];
-            [[cell imgCell] setHighlightedImage:[UIImage imageNamed:@"passwd44x44px.png"]];
+            [[cell imageView] setImage:[UIImage imageNamed:@"passwd44x44px.png"]];
             [[cell textCell] setText:@"Change Password"];
             [[cell textCell] setDelegate:self];
             [[cell textCell] setEnabled:NO];

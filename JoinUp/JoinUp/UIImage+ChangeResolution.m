@@ -33,4 +33,20 @@
     return UIImageJPEGRepresentation(newImage, 0.5);
 }
 
+- (NSData *) maskImage: (UIImage *)maskImage
+{
+    CGImageRef maskRef = maskImage.CGImage;
+    
+    CGImageRef mask = CGImageMaskCreate(CGImageGetWidth(maskRef),
+                                        CGImageGetHeight(maskRef),
+                                        CGImageGetBitsPerComponent(maskRef),
+                                        CGImageGetBitsPerPixel(maskRef),
+                                        CGImageGetBytesPerRow(maskRef),
+                                        CGImageGetDataProvider(maskRef), NULL, false);
+    
+    CGImageRef masked = CGImageCreateWithMask([self CGImage], mask);
+    
+    return UIImageJPEGRepresentation([UIImage imageWithCGImage:masked], 1.0);
+}
+
 @end

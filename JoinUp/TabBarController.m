@@ -56,6 +56,11 @@
                                                  name:@"AnotherInterlocator"
                                                object:nil];
     
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(friendshipRequest:)
+                                                     name:@"FriendshipRequest"
+                                                   object:nil];
+    
     chatIsActive = NO;
     
     ManagerMessages *managerMessages = [ManagerMessages sharedInstance];
@@ -148,6 +153,11 @@
         chatItem.badgeValue = [NSString stringWithFormat:@"%d", _countMessage];
         
     }
+}
+
+- (void)friendshipRequest: (NSNotification *)nitification {
+    UITabBarItem *friendsItem = (UITabBarItem *)[self.tabBar.items objectAtIndex:3];
+    friendsItem.badgeValue = [NSString stringWithFormat:@"%d", 1];
 }
 
 - (void)dealloc {

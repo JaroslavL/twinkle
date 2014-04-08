@@ -7,6 +7,7 @@
 //
 
 #import "PhotoViewController.h"
+#import "XMPPWrapper.h"
 
 @interface PhotoViewController ()
 
@@ -79,11 +80,19 @@
                   editingInfo:(NSDictionary *)editingInfo {
     
     NSData* transformImageData = [image transformation];
+    UIImage *avatar = [[UIImage alloc] initWithData:transformImageData];
     
     if ([self uploadPhoto:transformImageData]) {
-        [[Profile sharedInstance] setImgAvatar:[[UIImage alloc] initWithData:transformImageData]];
+        [[Profile sharedInstance] setImgAvatar:avatar];
         [_photoView setImage:[[Profile sharedInstance] imgAvatar]];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"changeAvatar" object:nil];
         [picker dismissViewControllerAnimated:YES completion:nil];
+        
+        // TODO: [avatar maskImage:[UIImage imageNamed:@"maska"]]
+        XMPPvCardTemp *xmppvCardTemp = [[[XMPPWrapper sharedInstance] xmppvCardTempModule] myvCardTemp];
+        [xmppvCardTemp setPhoto:transformImageData];
+        [[[XMPPWrapper sharedInstance] xmppvCardTempModule] updateMyvCardTemp:xmppvCardTemp];
+        
     } else {
         
         UIAlertView *alertView = [[UIAlertView alloc]

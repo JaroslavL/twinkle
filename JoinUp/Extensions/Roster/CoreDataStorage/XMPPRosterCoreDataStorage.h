@@ -55,8 +55,8 @@
 @property (readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
 @property (readonly) NSManagedObjectContext *mainThreadManagedObjectContext;
- 
-*/
+ */
+
 
 - (XMPPUserCoreDataStorageObject *)myUserForXMPPStream:(XMPPStream *)stream
                             managedObjectContext:(NSManagedObjectContext *)moc;

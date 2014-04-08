@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Profile.h"
+#import "UIImage+ChangeResolution.h"
 
 @interface ProfileViewer : UIView
 
@@ -32,5 +33,7 @@
 
 - (void)startChatingWith;
 - (void)showPhoto;
+
+- (void)changeAvatarNotification;
 
 @end

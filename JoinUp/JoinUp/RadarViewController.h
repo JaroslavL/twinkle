@@ -1,30 +1,22 @@
 //
 //  RadarViewController.h
-//  JoinUp
+//  JURadar
 //
-//  Created by solid on 18.02.14.
+//  Created by Andrew on 02/04/14.
 //  Copyright (c) 2014 Bros Universe. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import "NetworkConnection.h"
-#import "UINearUsersTableView.h"
+#import "JURadar.h"
+#import "JURadarButton.h"
+#import "SCWaveAnimationView.h"
+#import "JURadarProfileView.h"
+//#import "JURadarTableViewController.h"
 #import "ChatViewController.h"
-#import "ProfileViewer.h"
 #import "PhotoViewController.h"
 
-@interface RadarViewController : UIViewController
-{
-    NSMutableArray* buttonArray;
-    NSMutableDictionary* drawCoord;
-    User *user;
-}
-@property (nonatomic,strong) NSArray *nearbyUsers;
-@property (strong, nonatomic) IBOutlet UINearUsersTableView *tableNearUsers;
-@property (nonatomic, retain) ChatViewController *chatViewController;
-@property (weak, nonatomic) IBOutlet UILabel *latitideLabal;
-@property (weak, nonatomic) IBOutlet UILabel *longitude;
-@property (nonatomic, retain) ProfileViewer *profileViewer;
-@property (weak, nonatomic) IBOutlet UIImageView *myPointImage;
+@interface RadarViewController : UIViewController <JURadarProtocol, UIScrollViewDelegate>
+
+
 
 @end

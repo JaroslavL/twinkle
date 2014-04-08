@@ -12,6 +12,12 @@
 
 @synthesize REGISTER;
 @synthesize xmppStream;
+@synthesize xmppRoster;
+@synthesize xmppRosterStorage;
+@synthesize xmppvCardAvatarModule;
+@synthesize xmppvCardTempModule;
+@synthesize xmppCapabilities;
+@synthesize xmppCapabilitiesStorage;
 
 static XMPPWrapper* _sharedInstance;
 
@@ -46,9 +52,29 @@ static XMPPWrapper* _sharedInstance;
     [xmppMessageArchivingModule  addDelegate:self delegateQueue:dispatch_get_main_queue()];
 }
 
+- (void)initRoster {
+    
+     xmppRosterStorage = [[XMPPRosterCoreDataStorage alloc] init];
+     xmppRoster = [[XMPPRoster alloc] initWithRosterStorage:xmppRosterStorage];
+    xmppRoster.autoAcceptKnownPresenceSubscriptionRequests = YES;
+     xmppRoster.autoFetchRoster = true;
+     [xmppRoster activate:xmppStream];
+     [xmppRoster addDelegate:self delegateQueue:dispatch_get_main_queue()];
+    
+}
+
+- (void)initvCard {
+    xmppvCardStorage = [XMPPvCardCoreDataStorage sharedInstance];
+    xmppvCardTempModule = [[XMPPvCardTempModule alloc] initWithvCardStorage:xmppvCardStorage];
+    xmppvCardAvatarModule = [[XMPPvCardAvatarModule alloc] initWithvCardTempModule:xmppvCardTempModule];
+    [xmppvCardTempModule activate:xmppStream];
+    [xmppvCardAvatarModule activate:xmppStream];
+}
+
 - (void)setupStream {
     xmppStream = [[XMPPStream alloc] init];
     [xmppStream addDelegate:self delegateQueue:dispatch_get_main_queue()];
+    xmppStream.enableBackgroundingOnSocket = YES;
 }
 - (void)goOnline {
     XMPPPresence *presence= [XMPPPresence presence];
@@ -77,6 +103,8 @@ static XMPPWrapper* _sharedInstance;
     // init storage message on server
     
     [self initMessageArchiving];
+    [self initRoster];
+    [self initvCard];
     
     NSError *error = nil;
     if (![xmppStream connectWithTimeout:XMPPStreamTimeoutNone error:&error])
@@ -98,6 +126,7 @@ static XMPPWrapper* _sharedInstance;
 - (void) disconnect {
     [self goOffline];
     [xmppStream disconnect];
+    [NetworkConnection sendOfflineStatus];
 }
 
 - (void) sendMessage: (NSXMLElement *)message {
@@ -109,10 +138,13 @@ static XMPPWrapper* _sharedInstance;
 }
 
 - (BOOL)xmppStream:(XMPPStream *)sender didReceiveIQ:(XMPPIQ *)iq {
-    NSLog(@"IQ, %@", iq);
+    
     return YES;
 }
 
+- (void)xmppStream: (XMPPStream *)sender didReceivePresence:(XMPPPresence *)presence {
+    //NSLog(@"%@%@", @"didReceivePresence: ", [presence fromStr]);
+}
 - (void) xmppStreamDidConnect:(XMPPStream *)sender
 {
     if ([xmppStream authenticateWithPassword:passwd error:NULL]) {
@@ -220,5 +252,16 @@ static XMPPWrapper* _sharedInstance;
         }
     }
 }
+
+/*- (void)xmppRoster:(XMPPRoster *)sender didReceivePresenceSubscriptionRequest:(XMPPPresence *)presence {
+    //[sender acceptPresenceSubscriptionRequestFrom:[XMPPJID jidWithString:[presence fromStr]] andAddToRoster:YES];
+    
+    /*if (!_usersWhoesSendFriendshipRequest) {
+        _usersWhoesSendFriendshipRequest = [[NSMutableArray alloc] init];
+        [_usersWhoesSendFriendshipRequest addObject:[presence from]];
+    }
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"FriendshipRequest" object:presence];
+    NSLog(@"presence status: %@", presence);
+}*/
 
 @end
